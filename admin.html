@@ -729,6 +729,14 @@
         } catch(e) { return null; }
     }
 
+    function sameValue(a, b) {
+        return JSON.stringify(a) === JSON.stringify(b);
+    }
+
+    function wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     async function sheetsSet(key, value) {
         const url = getSheetsUrl();
         if (!url) return false;
@@ -738,7 +746,12 @@
                 mode: 'no-cors',
                 body: JSON.stringify({ key, value })
             });
-            return true;
+            for (let i = 0; i < 5; i++) {
+                await wait(500);
+                const data = await sheetsGet();
+                if (data && sameValue(data[key], value)) return true;
+            }
+            return false;
         } catch(e) { return false; }
     }
 
@@ -765,11 +778,14 @@
     async function syncToSheets() {
         const btn = document.getElementById('btnSyncUp');
         btn.textContent = 'Загрузка...';
-        await sheetsSet('services', services);
-        await sheetsSet('texts', customTexts);
-        await sheetsSet('contacts', customContacts);
+        const okServices = await sheetsSet('services', services);
+        const okTexts = await sheetsSet('texts', customTexts);
+        const okContacts = await sheetsSet('contacts', customContacts);
         btn.innerHTML = '<i data-lucide="upload-cloud" style="width:16px;height:16px"></i> Загрузить в Sheets';
         showToast('Данные отправлены в Google Sheets!');
+        if (!(okServices && okTexts && okContacts)) {
+            alert('Google Sheets sync needs attention');
+        }
         setTimeout(() => lucide.createIcons(), 50);
     }
 
