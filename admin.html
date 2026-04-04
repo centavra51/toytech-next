@@ -650,7 +650,7 @@
 <script>
     // ── CONFIG ──
     let PASSWORD = localStorage.getItem('tt_password') || 'toytech2024';
-    const ICONS = ['battery-charging','cog','zap','wind','brush','bike','wrench','shield-check','gauge','thermometer','box','droplets','air-vent','cpu','car','tool','settings','check-circle','star','trending-up','award','rocket'];
+    const ICONS = ['battery-charging','cog','zap','wind','brush','bike','wrench','shield-check','gauge','thermometer','box','droplets','air-vent','cpu','car','hammer','settings','check-circle','star','trending-up','award','rocket'];
 
     // ── STATE ──
     let services = [];
@@ -702,6 +702,10 @@
     // ── GOOGLE SHEETS ──
     function getSheetsUrl() { return localStorage.getItem('tt_sheets_url') || ''; }
 
+    function getSheetsProxyUrl(url) {
+        return '/api/sheets?url=' + encodeURIComponent(url);
+    }
+
     function initSheetsUI() {
         const url = getSheetsUrl();
         const status = document.getElementById('sheetsStatus');
@@ -724,7 +728,7 @@
         const url = getSheetsUrl();
         if (!url) return null;
         try {
-            const r = await fetch(url);
+            const r = await fetch(getSheetsProxyUrl(url));
             return await r.json();
         } catch(e) { return null; }
     }
@@ -741,11 +745,14 @@
         const url = getSheetsUrl();
         if (!url) return false;
         try {
-            await fetch(url, {
+            const r = await fetch('/api/sheets', {
                 method: 'POST',
-                mode: 'no-cors',
-                body: JSON.stringify({ key, value })
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ url, key, value })
             });
+            if (!r.ok) return false;
             for (let i = 0; i < 5; i++) {
                 await wait(500);
                 const data = await sheetsGet();
@@ -762,7 +769,7 @@
         statusEl.style.color = 'var(--muted)';
         statusEl.textContent = 'Проверка подключения...';
         try {
-            const r = await fetch(url);
+            const r = await fetch(getSheetsProxyUrl(url));
             const data = await r.json();
             localStorage.setItem('tt_sheets_url', url);
             statusEl.style.color = 'var(--green)';
