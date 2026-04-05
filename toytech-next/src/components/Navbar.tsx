@@ -87,6 +87,8 @@ export default function Navbar({ locale, t }: NavbarProps) {
             fill
             className={logoImageClass}
             priority
+            sizes="(max-width: 1024px) 240px, 320px"
+            quality={85}
           />
         </Link>
 
@@ -162,6 +164,8 @@ export default function Navbar({ locale, t }: NavbarProps) {
               fill
               className="origin-left translate-y-[4px] scale-[1.2] object-contain object-left sm:scale-[1.24]"
               priority
+              sizes="(max-width: 480px) 208px, 240px"
+              quality={85}
             />
           </Link>
 
@@ -194,6 +198,8 @@ export default function Navbar({ locale, t }: NavbarProps) {
             alt="ToyTech"
             fill
             className="origin-left translate-y-[5px] scale-[1.28] object-contain object-left"
+            sizes="(max-width: 576px) 288px, 320px"
+            quality={85}
           />
         </div>
 

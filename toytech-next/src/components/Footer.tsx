@@ -46,6 +46,8 @@ export default function Footer({ t, locale }: FooterProps) {
                 alt="ToyTech"
                 fill
                 className="origin-left translate-y-[5px] scale-[1.32] object-contain object-left"
+                sizes="(max-width: 768px) 288px, 320px"
+                quality={85}
               />
             </Link>
             <p className="max-w-sm font-medium leading-relaxed text-zinc-400">
