@@ -1,0 +1,28 @@
+{
+  "common": {
+    "title": "ToyTech Hybrid Specialist",
+    "phone": "+373 68 771 547",
+    "address": "Chisinau, Grenoble 7 str."
+  },
+  "nav": {
+    "services": "Services",
+    "advantages": "Problems",
+    "about": "About Us",
+    "reviews": "Reviews",
+    "faq": "FAQ",
+    "call": "Call Now",
+    "book": "Book Now"
+  },
+  "hero": {
+    "title": "Hybrid Car Repair <span class=\"text-red-600\">in Chisinau</span>",
+    "subtitle": "Diagnostics and repair of batteries, inverters, and high-voltage systems. We handle complex cases where other services failed.",
+    "cta_book": "Book Diagnostics",
+    "cta_call": "Call Now",
+    "stat_experience": "Years of experience",
+    "stat_repairs": "Cars repaired",
+    "stat_diagnosis": "Accurate diagnostics",
+    "badge": "ToyTech Hybrid Specialist",
+    "price": "10+ years",
+    "price_text": "Warranty on all work"
+  }
+}

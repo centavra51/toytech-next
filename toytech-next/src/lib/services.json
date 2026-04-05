@@ -1,0 +1,62 @@
+[
+  {
+    "id": "s1",
+    "slug": "hybrid-systems",
+    "icon": "battery-charging"
+  },
+  {
+    "id": "s2",
+    "slug": "engine-mechanics",
+    "icon": "cog"
+  },
+  {
+    "id": "s3",
+    "slug": "electronics-tuning",
+    "icon": "zap"
+  },
+  {
+    "id": "s4",
+    "slug": "exhaust-system",
+    "icon": "wind"
+  },
+  {
+    "id": "s5",
+    "slug": "body-work",
+    "icon": "brush"
+  },
+  {
+    "id": "s6",
+    "slug": "motorcycles",
+    "icon": "bike"
+  },
+  {
+    "id": "s7",
+    "slug": "pre-purchase-inspection",
+    "icon": "shield-check"
+  },
+  {
+    "id": "s8",
+    "slug": "wheel-alignment",
+    "icon": "gauge"
+  },
+  {
+    "id": "s9",
+    "slug": "cooling-system",
+    "icon": "thermometer"
+  },
+  {
+    "id": "s10",
+    "slug": "transmission-gearbox",
+    "icon": "box"
+  },
+  {
+    "id": "s11",
+    "slug": "oil-change-maintenance",
+    "icon": "droplets"
+  },
+  {
+    "id": "s12",
+    "slug": "air-conditioning",
+    "icon": "air-vent"
+  }
+]

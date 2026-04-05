@@ -1,0 +1,28 @@
+{
+  "common": {
+    "title": "ToyTech Hybrid Specialist",
+    "phone": "+373 68 771 547",
+    "address": "Chișinău, str. Grenoble 7"
+  },
+  "nav": {
+    "services": "Servicii",
+    "advantages": "Probleme",
+    "about": "Despre noi",
+    "reviews": "Recenzii",
+    "faq": "FAQ",
+    "call": "Sunați",
+    "book": "Programare"
+  },
+  "hero": {
+    "title": "Repararea mașinilor hibride <span class=\"text-red-600\">în Chișinău</span>",
+    "subtitle": "Diagnoză și repararea bateriilor, invertoarelor și sistemelor de înaltă tensiune. Acceptăm cazuri complexe, unde alte service-uri nu au reușit.",
+    "cta_book": "Programare diagnoză",
+    "cta_call": "Sunați",
+    "stat_experience": "Ani de experiență",
+    "stat_repairs": "Mașini reparate",
+    "stat_diagnosis": "Diagnoză precisă",
+    "badge": "ToyTech Hybrid Specialist",
+    "price": "10+ ani",
+    "price_text": "Garanție pentru toate lucrările"
+  }
+}
