@@ -20,7 +20,6 @@ import {
 } from "lucide-react";
 import type { Translation } from "../lib/i18n";
 import type { Locale } from "../lib/i18n";
-import { toTelHref } from "../lib/contact-links";
 
 type ServiceItem = {
   id: string;
@@ -169,7 +168,7 @@ export default function Services({ locale, t, servicesData, translations }: Serv
         {showAll && (
           <div className="mt-10 flex justify-center">
             <a
-              href={toTelHref(t.common.phone)}
+              href="#appointment-form"
               className="inline-flex min-h-14 items-center justify-center rounded-2xl border border-red-600/30 bg-red-600 px-8 py-4 text-center text-base font-black text-white shadow-xl shadow-red-600/20 transition-all hover:-translate-y-0.5 hover:bg-red-700 sm:text-lg"
             >
               {getMoreServicesLabel(locale)}

@@ -59,7 +59,14 @@ export default async function Home({ params }: Props) {
         <FAQ t={t} />
       </div>
 
-      <Gallery locale={locale} />
+      <Gallery
+        locale={locale}
+        socialLinks={{
+          instagram: t.common.instagram,
+          facebook: t.common.facebook,
+          tiktok: t.common.tiktok,
+        }}
+      />
 
       <section id="appointment-form" className="py-24 bg-zinc-950/50">
         <div className="mx-auto w-full max-w-[1380px] px-6">
