@@ -30,7 +30,7 @@ const galleryContent = {
         desc: "Поиск скрытых ошибок в электронных системах и точное выявление неисправностей.",
       },
       {
-        image: "/images/process_repair.webp",
+        image: "/images/Motor_si_mecanica.webp",
         title: "Обслуживание ДВС",
         desc: "Капитальный ремонт, сервис и точная механика для сложных случаев.",
       },
@@ -80,7 +80,7 @@ const galleryContent = {
         desc: "Cautam rapid erorile ascunse din sistemele electronice.",
       },
       {
-        image: "/images/process_repair.webp",
+        image: "/images/Motor_si_mecanica.webp",
         title: "Service motor",
         desc: "Interventii mecanice serioase si intretinere corecta.",
       },
@@ -130,7 +130,7 @@ const galleryContent = {
         desc: "We track hidden faults across electronic and hybrid systems.",
       },
       {
-        image: "/images/process_repair.webp",
+        image: "/images/Motor_si_mecanica.webp",
         title: "Engine service",
         desc: "Mechanical repair and maintenance handled with precision.",
       },
