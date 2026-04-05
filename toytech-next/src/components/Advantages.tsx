@@ -105,13 +105,13 @@ export default function Advantages({ locale }: { locale: string }) {
           {content.items.map((item) => (
             <div
               key={item.title}
-              className="rounded-[2rem] border border-zinc-800 bg-zinc-900 p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-red-600/50"
+              className="rounded-[2rem] border border-zinc-800 bg-zinc-900 p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-red-600/50 h-full flex flex-col"
             >
               <div className="mb-4 text-5xl font-black leading-none text-red-600">
                 {item.number}
               </div>
               <h3 className="mb-3 text-2xl font-black text-white">{item.title}</h3>
-              <p className="text-sm leading-relaxed text-zinc-300">{item.desc}</p>
+              <p className="text-sm leading-relaxed text-zinc-300 line-clamp-3">{item.desc}</p>
             </div>
           ))}
         </div>
