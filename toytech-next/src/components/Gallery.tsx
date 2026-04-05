@@ -25,7 +25,7 @@ const galleryContent = {
       "Откройте подборку реальных кейсов, коротких видео и свежих работ ToyTech в Instagram, TikTok и Facebook.",
     items: [
       {
-        image: "/images/process_diag.webp",
+        image: "/images/process_repair.webp",
         title: "Компьютерная диагностика",
         desc: "Поиск скрытых ошибок в электронных системах и точное выявление неисправностей.",
       },
@@ -35,7 +35,7 @@ const galleryContent = {
         desc: "Капитальный ремонт, сервис и точная механика для сложных случаев.",
       },
       {
-        image: "/images/brands_collage.webp",
+        image: "/images/master.webp",
         title: "Современные боксы",
         desc: "Рабочие зоны и оборудование для сложных ремонтов без лишней суеты.",
       },
@@ -75,7 +75,7 @@ const galleryContent = {
       "Deschide exemple reale, clipuri scurte si lucrari recente ToyTech pe Instagram, TikTok si Facebook.",
     items: [
       {
-        image: "/images/process_diag.webp",
+        image: "/images/process_repair.webp",
         title: "Diagnoza computerizata",
         desc: "Cautam rapid erorile ascunse din sistemele electronice.",
       },
@@ -85,7 +85,7 @@ const galleryContent = {
         desc: "Interventii mecanice serioase si intretinere corecta.",
       },
       {
-        image: "/images/brands_collage.webp",
+        image: "/images/master.webp",
         title: "Boxe moderne",
         desc: "Spatiu bine echipat pentru lucrari dificile si curate.",
       },
@@ -107,7 +107,7 @@ const galleryContent = {
       },
       {
         key: "facebook",
-        image: "/images/process_diag.webp",
+        image: "/images/suspension.webp",
         title: "Facebook",
         desc: "Noutati, cazuri rezolvate si actualizari despre servicii.",
         action: "Deschide Facebook",
@@ -125,7 +125,7 @@ const galleryContent = {
       "Open a curated selection of real cases, short videos, and fresh ToyTech jobs on Instagram, TikTok, and Facebook.",
     items: [
       {
-        image: "/images/process_diag.webp",
+        image: "/images/process_repair.webp",
         title: "Computer diagnostics",
         desc: "We track hidden faults across electronic and hybrid systems.",
       },
@@ -135,7 +135,7 @@ const galleryContent = {
         desc: "Mechanical repair and maintenance handled with precision.",
       },
       {
-        image: "/images/brands_collage.webp",
+        image: "/images/master.webp",
         title: "Modern bays",
         desc: "Equipped workspaces for clean, efficient, professional service.",
       },
@@ -157,7 +157,7 @@ const galleryContent = {
       },
       {
         key: "facebook",
-        image: "/images/process_diag.webp",
+        image: "/images/suspension.webp",
         title: "Facebook",
         desc: "Service updates, customer cases, and the latest workshop news.",
         action: "Open Facebook",
