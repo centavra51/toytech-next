@@ -25,17 +25,17 @@ const galleryContent = {
       "Откройте подборку реальных кейсов, коротких видео и свежих работ ToyTech в Instagram, TikTok и Facebook.",
     items: [
       {
-        image: "/images/process_diag.png",
+        image: "/images/process_diag.webp",
         title: "Компьютерная диагностика",
         desc: "Поиск скрытых ошибок в электронных системах и точное выявление неисправностей.",
       },
       {
-        image: "/images/process_repair.png",
+        image: "/images/process_repair.webp",
         title: "Обслуживание ДВС",
         desc: "Капитальный ремонт, сервис и точная механика для сложных случаев.",
       },
       {
-        image: "/images/brands_collage.png",
+        image: "/images/brands_collage.webp",
         title: "Современные боксы",
         desc: "Рабочие зоны и оборудование для сложных ремонтов без лишней суеты.",
       },
@@ -43,21 +43,21 @@ const galleryContent = {
     socialCards: [
       {
         key: "instagram",
-        image: "/images/process_repair.png",
+        image: "/images/process_repair.webp",
         title: "Instagram",
         desc: "Фото до и после, процессы ремонта и свежие проекты сервиса.",
         action: "Открыть Instagram",
       },
       {
         key: "tiktok",
-        image: "/images/master.png",
+        image: "/images/master.webp",
         title: "TikTok",
         desc: "Короткие ролики, реальные ремонты и живой контент из сервиса.",
         action: "Смотреть TikTok",
       },
       {
         key: "facebook",
-        image: "/images/process_diag.png",
+        image: "/images/process_diag.webp",
         title: "Facebook",
         desc: "Новости сервиса, кейсы клиентов и обновления по услугам.",
         action: "Открыть Facebook",
@@ -75,17 +75,17 @@ const galleryContent = {
       "Deschide exemple reale, clipuri scurte si lucrari recente ToyTech pe Instagram, TikTok si Facebook.",
     items: [
       {
-        image: "/images/process_diag.png",
+        image: "/images/process_diag.webp",
         title: "Diagnoza computerizata",
         desc: "Cautam rapid erorile ascunse din sistemele electronice.",
       },
       {
-        image: "/images/process_repair.png",
+        image: "/images/process_repair.webp",
         title: "Service motor",
         desc: "Interventii mecanice serioase si intretinere corecta.",
       },
       {
-        image: "/images/brands_collage.png",
+        image: "/images/brands_collage.webp",
         title: "Boxe moderne",
         desc: "Spatiu bine echipat pentru lucrari dificile si curate.",
       },
@@ -93,21 +93,21 @@ const galleryContent = {
     socialCards: [
       {
         key: "instagram",
-        image: "/images/process_repair.png",
+        image: "/images/process_repair.webp",
         title: "Instagram",
         desc: "Poze before/after, procese de reparatie si proiecte recente din service.",
         action: "Deschide Instagram",
       },
       {
         key: "tiktok",
-        image: "/images/master.png",
+        image: "/images/master.webp",
         title: "TikTok",
         desc: "Clipuri scurte, reparatii reale si continut din atelier.",
         action: "Vezi TikTok",
       },
       {
         key: "facebook",
-        image: "/images/process_diag.png",
+        image: "/images/process_diag.webp",
         title: "Facebook",
         desc: "Noutati, cazuri rezolvate si actualizari despre servicii.",
         action: "Deschide Facebook",
@@ -125,17 +125,17 @@ const galleryContent = {
       "Open a curated selection of real cases, short videos, and fresh ToyTech jobs on Instagram, TikTok, and Facebook.",
     items: [
       {
-        image: "/images/process_diag.png",
+        image: "/images/process_diag.webp",
         title: "Computer diagnostics",
         desc: "We track hidden faults across electronic and hybrid systems.",
       },
       {
-        image: "/images/process_repair.png",
+        image: "/images/process_repair.webp",
         title: "Engine service",
         desc: "Mechanical repair and maintenance handled with precision.",
       },
       {
-        image: "/images/brands_collage.png",
+        image: "/images/brands_collage.webp",
         title: "Modern bays",
         desc: "Equipped workspaces for clean, efficient, professional service.",
       },
@@ -143,21 +143,21 @@ const galleryContent = {
     socialCards: [
       {
         key: "instagram",
-        image: "/images/process_repair.png",
+        image: "/images/process_repair.webp",
         title: "Instagram",
         desc: "Before-and-after photos, repair stories, and recent workshop projects.",
         action: "Open Instagram",
       },
       {
         key: "tiktok",
-        image: "/images/master.png",
+        image: "/images/master.webp",
         title: "TikTok",
         desc: "Short videos, real repairs, and behind-the-scenes service content.",
         action: "Watch TikTok",
       },
       {
         key: "facebook",
-        image: "/images/process_diag.png",
+        image: "/images/process_diag.webp",
         title: "Facebook",
         desc: "Service updates, customer cases, and the latest workshop news.",
         action: "Open Facebook",

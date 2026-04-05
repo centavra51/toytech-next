@@ -75,7 +75,7 @@ export default function Hero({ t }: HeroProps) {
           <div className="relative group">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-zinc-800 shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
               <Image
-                src="/images/hero_image.jpg"
+                src="/images/hero_image.webp"
                 alt="ToyTech Hybrid Specialist"
                 fill
                 priority

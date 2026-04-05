@@ -3,49 +3,49 @@
     "id": "s1",
     "slug": "hybrid-systems",
     "icon": "battery-charging",
-    "image": "/images/gibrid_diagnosis.png"
+    "image": "/images/gibrid_diagnosis.webp"
   },
   {
     "id": "s2",
     "slug": "engine-mechanics",
     "icon": "cog",
-    "image": "/images/Motor_si_mecanica.png"
+    "image": "/images/Motor_si_mecanica.webp"
   },
   {
     "id": "s3",
     "slug": "electronics-tuning",
     "icon": "zap",
-    "image": "/images/hero_image.jpg"
+    "image": "/images/hero_image.webp"
   },
   {
     "id": "s4",
     "slug": "exhaust-system",
     "icon": "wind",
-    "image": "/images/Sistem_evacuare.png"
+    "image": "/images/Sistem_de_racire.webp"
   },
   {
     "id": "s5",
     "slug": "body-work",
     "icon": "brush",
-    "image": "/images/mechanic_portrait.jpg"
+    "image": "/images/suspension.webp"
   },
   {
     "id": "s6",
     "slug": "motorcycles",
     "icon": "bike",
-    "image": "/images/Motociclete.png"
+    "image": "/images/Motociclete.webp"
   },
   {
     "id": "s7",
     "slug": "pre-purchase-inspection",
     "icon": "shield-check",
-    "image": "/images/Inspectie_inainte_de_cumparare.png"
+    "image": "/images/Inspectie_inainte_de_cumparare.webp"
   },
   {
     "id": "s8",
     "slug": "wheel-alignment",
     "icon": "gauge",
-    "image": "/images/Geometrie_roti.png"
+    "image": "/images/Geometrie_roti.webp"
   },
   {
     "id": "s9",
@@ -57,18 +57,18 @@
     "id": "s10",
     "slug": "transmission-gearbox",
     "icon": "box",
-    "image": "/images/Cutie_de_viteze.png"
+    "image": "/images/Cutie_de_viteze.webp"
   },
   {
     "id": "s11",
     "slug": "oil-change-maintenance",
     "icon": "droplets",
-    "image": "/images/Schimb_ulei_si_mentenanta.png"
+    "image": "/images/Schimb_ulei_si_mentenanta.webp"
   },
   {
     "id": "s12",
     "slug": "air-conditioning",
     "icon": "air-vent",
-    "image": "/images/Aer_conditionat.png"
+    "image": "/images/Aer_conditionat.webp"
   }
 ]

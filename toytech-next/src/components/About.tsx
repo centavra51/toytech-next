@@ -28,7 +28,7 @@ export default function About({ t }: AboutProps) {
           <div className="relative">
             <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-zinc-800">
               <Image 
-                src="/images/master.png" 
+                src="/images/master.webp" 
                 alt="ToyTech Team" 
                 fill 
                 sizes="(max-width: 768px) 100vw, 50vw"
