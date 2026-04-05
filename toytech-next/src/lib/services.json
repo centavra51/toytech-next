@@ -9,25 +9,25 @@
     "id": "s2",
     "slug": "engine-mechanics",
     "icon": "cog",
-    "image": "/images/Motor si mecanica.png"
+    "image": "/images/Motor_si_mecanica.png"
   },
   {
     "id": "s3",
     "slug": "electronics-tuning",
     "icon": "zap",
-    "image": "/images/hero image.jpg"
+    "image": "/images/hero_image.jpg"
   },
   {
     "id": "s4",
     "slug": "exhaust-system",
     "icon": "wind",
-    "image": "/images/Sistem evacuare.png"
+    "image": "/images/Sistem_evacuare.png"
   },
   {
     "id": "s5",
     "slug": "body-work",
     "icon": "brush",
-    "image": "/images/mechanic-portrait.jpg"
+    "image": "/images/mechanic_portrait.jpg"
   },
   {
     "id": "s6",
@@ -39,13 +39,13 @@
     "id": "s7",
     "slug": "pre-purchase-inspection",
     "icon": "shield-check",
-    "image": "/images/Inspectie inainte de cumparare.png"
+    "image": "/images/Inspectie_inainte_de_cumparare.png"
   },
   {
     "id": "s8",
     "slug": "wheel-alignment",
     "icon": "gauge",
-    "image": "/images/Geometrie roti.png"
+    "image": "/images/Geometrie_roti.png"
   },
   {
     "id": "s9",
@@ -57,18 +57,18 @@
     "id": "s10",
     "slug": "transmission-gearbox",
     "icon": "box",
-    "image": "/images/Cutie de viteze.png"
+    "image": "/images/Cutie_de_viteze.png"
   },
   {
     "id": "s11",
     "slug": "oil-change-maintenance",
     "icon": "droplets",
-    "image": "/images/Schimb ulei si mentenanta.png"
+    "image": "/images/Schimb_ulei_si_mentenanta.png"
   },
   {
     "id": "s12",
     "slug": "air-conditioning",
     "icon": "air-vent",
-    "image": "/images/Aer conditionat.png"
+    "image": "/images/Aer_conditionat.png"
   }
 ]
