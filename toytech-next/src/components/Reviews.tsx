@@ -95,7 +95,7 @@ export default function Reviews({ t }: ReviewsProps) {
             {t.reviews.label}
           </div>
           <h2 className="text-4xl lg:text-5xl font-black text-white">{t.reviews.title}</h2>
-          <p className="text-lg text-zinc-400 font-medium">{t.reviews.subtitle}</p>
+          <p className="text-lg text-zinc-300 font-medium">{t.reviews.subtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -106,13 +106,13 @@ export default function Reviews({ t }: ReviewsProps) {
               </div>
               
               <div className="relative space-y-6">
-                <div className="flex gap-1">
+                <div className="flex gap-1" aria-label={`${r.rating} star rating`}>
                   {[...Array(r.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-amber-500 text-amber-500" />
+                    <Star key={i} className="w-5 h-5 fill-amber-500 text-amber-500" aria-hidden="true" />
                   ))}
                 </div>
                 
-                <p className="text-xl font-medium text-white leading-relaxed italic">
+                <p className="text-xl font-medium text-zinc-100 leading-relaxed italic">
                   {r.text}
                 </p>
 
@@ -136,6 +136,7 @@ export default function Reviews({ t }: ReviewsProps) {
             target="_blank"
             rel="noreferrer"
             className="inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl border border-zinc-700 bg-zinc-900 px-8 py-4 text-center text-base font-black text-white shadow-xl transition-all hover:-translate-y-0.5 hover:border-red-600 hover:shadow-red-600/15 sm:text-lg"
+            aria-label="View all reviews on Google"
           >
             <span>{getMoreReviewsLabel(t)}</span>
             <ExternalLink className="h-5 w-5 text-red-500" />

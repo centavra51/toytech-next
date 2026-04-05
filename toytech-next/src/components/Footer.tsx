@@ -48,7 +48,7 @@ export default function Footer({ t, locale }: FooterProps) {
                 className="origin-left translate-y-[5px] scale-[1.32] object-contain object-left"
               />
             </Link>
-            <p className="max-w-sm font-medium leading-relaxed text-zinc-500">
+            <p className="max-w-sm font-medium leading-relaxed text-zinc-400">
               {t.footer.brand_text}
             </p>
             <div className="flex gap-4">
@@ -86,7 +86,7 @@ export default function Footer({ t, locale }: FooterProps) {
                 <li key={label}>
                   <Link
                     href={`/${locale}#services`}
-                    className="font-medium text-zinc-500 transition-colors hover:text-red-500"
+                    className="font-medium text-zinc-400 transition-colors hover:text-red-500"
                   >
                     {label}
                   </Link>

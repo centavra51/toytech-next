@@ -30,7 +30,7 @@ export default function Hero({ t }: HeroProps) {
               dangerouslySetInnerHTML={{ __html: t.hero.title }}
             />
 
-            <p className="text-lg font-medium leading-relaxed text-zinc-400 lg:text-xl">
+            <p className="text-lg font-medium leading-relaxed text-zinc-300 lg:text-xl">
               {t.hero.subtitle}
             </p>
 
@@ -64,7 +64,7 @@ export default function Hero({ t }: HeroProps) {
                   <div className="text-4xl font-black text-red-600 lg:text-5xl">
                     {stat.number}
                   </div>
-                  <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 lg:text-sm">
+                  <div className="text-xs font-bold uppercase tracking-widest text-zinc-400 lg:text-sm">
                     {stat.label}
                   </div>
                 </div>

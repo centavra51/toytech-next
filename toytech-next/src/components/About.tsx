@@ -51,7 +51,7 @@ export default function About({ t }: AboutProps) {
                 {t.about.label}
               </div>
               <h2 className="text-4xl lg:text-5xl font-black text-white" dangerouslySetInnerHTML={{ __html: t.about.title }} />
-              <p className="text-lg text-zinc-400 leading-relaxed">
+              <p className="text-lg text-zinc-300 leading-relaxed">
                 {t.about.desc}
               </p>
             </div>

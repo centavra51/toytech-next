@@ -20,7 +20,7 @@ export default function CTA({ t }: CTAProps) {
             <h2 className="text-4xl font-black leading-tight text-white lg:text-6xl">
               {t.cta.title}
             </h2>
-            <p className="mx-auto max-w-2xl text-xl font-medium text-zinc-400">
+            <p className="mx-auto max-w-2xl text-xl font-medium text-zinc-300">
               {t.cta.subtitle}
             </p>
           </div>

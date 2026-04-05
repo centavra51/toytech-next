@@ -184,7 +184,7 @@ export default function Gallery({ locale, socialLinks }: GalleryProps) {
             {content.label}
           </div>
           <h2 className="text-4xl font-black text-white lg:text-5xl">{content.title}</h2>
-          <p className="text-lg font-medium text-zinc-400">{content.subtitle}</p>
+          <p className="text-lg font-medium text-zinc-300">{content.subtitle}</p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-3">

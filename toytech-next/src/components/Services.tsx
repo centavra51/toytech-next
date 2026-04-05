@@ -98,7 +98,7 @@ export default function Services({ locale, t, servicesData, translations }: Serv
           <h2 className="text-4xl font-black text-white lg:text-5xl">
             {t.services.title}
           </h2>
-          <p className="text-lg font-medium text-zinc-400">
+          <p className="text-lg font-medium text-zinc-300">
             {t.services.subtitle}
           </p>
         </div>
@@ -136,7 +136,7 @@ export default function Services({ locale, t, servicesData, translations }: Serv
                     <h3 className="text-2xl font-extrabold text-white transition-colors group-hover:text-red-500">
                       {item.title}
                     </h3>
-                    <p className="line-clamp-2 text-sm leading-relaxed text-zinc-400">
+                    <p className="line-clamp-2 text-sm leading-relaxed text-zinc-300">
                       {item.desc}
                     </p>
                   </div>

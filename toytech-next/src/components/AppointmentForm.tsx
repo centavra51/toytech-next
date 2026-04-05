@@ -95,9 +95,10 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
     <div className="group relative overflow-hidden rounded-[2.5rem] border border-zinc-800 bg-zinc-900 p-8 shadow-3xl shadow-red-600/5 lg:p-12">
       <div className="absolute right-0 top-0 -z-10 h-64 w-64 rounded-full bg-red-600/5 blur-[80px] transition-all duration-500 group-hover:bg-red-600/10" />
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6" noValidate>
         <input
           type="text"
+          aria-label="Full Name"
           name="website"
           tabIndex={-1}
           autoComplete="off"
@@ -109,7 +110,7 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
           <h3 className="text-3xl font-black tracking-tighter text-white">
             {t.form.title}
           </h3>
-          <p className="font-medium text-zinc-500">{t.form.subtitle}</p>
+          <p className="font-medium text-zinc-400">{t.form.subtitle}</p>
           <div className="flex flex-wrap items-center gap-4 pt-3">
             <a
               href={toTelHref(t.common.phone)}
@@ -124,11 +125,11 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
 
         <div className="grid gap-6 md:grid-cols-2">
           <div className="space-y-2">
-            <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-500">
+            <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
               {t.form.nameLabel}
             </label>
             <div className="relative">
-              <User className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-600" />
+              <User className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-400" />
               <input
                 required
                 name="name"
@@ -140,11 +141,11 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
           </div>
 
           <div className="space-y-2">
-            <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-500">
+            <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
               {t.form.phoneLabel}
             </label>
             <div className="relative">
-              <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-600" />
+              <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-400" />
               <input
                 required
                 name="phone"
@@ -158,11 +159,11 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
 
         <div className="grid gap-6 md:grid-cols-2">
           <div className="space-y-2">
-            <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-500">
+            <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
               {t.form.carLabel}
             </label>
             <div className="relative">
-              <Car className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-600" />
+              <Car className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-400" />
               <input
                 name="car"
                 type="text"
@@ -173,11 +174,11 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
           </div>
 
           <div className="space-y-2">
-            <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-500">
+            <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
               {t.form.dateLabel}
             </label>
             <div className="relative">
-              <Calendar className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-600" />
+              <Calendar className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-400" />
               <input
                 name="date"
                 type="date"
@@ -188,7 +189,7 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
         </div>
 
         <div className="space-y-2">
-          <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-500">
+          <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
             {t.form.serviceLabel}
           </label>
           <select
@@ -225,6 +226,7 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
         <button
           disabled={loading}
           type="submit"
+          aria-label={loading ? "Submitting appointment form" : "Submit appointment form"}
           className="flex w-full items-center justify-center gap-3 rounded-2xl bg-red-600 py-5 text-xl font-black text-white transition-all hover:bg-red-700 disabled:bg-zinc-800"
         >
           {loading ? (
@@ -242,7 +244,7 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
 
         {error && <p className="text-center text-sm font-medium text-red-400">{error}</p>}
 
-        <p className="px-10 text-center text-xs font-bold leading-relaxed text-zinc-600">
+        <p className="px-10 text-center text-xs font-bold leading-relaxed text-zinc-400">
           {t.form.privacy}
         </p>
       </form>

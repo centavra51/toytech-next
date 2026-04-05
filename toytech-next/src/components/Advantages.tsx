@@ -98,7 +98,7 @@ export default function Advantages({ locale }: { locale: string }) {
             {content.label}
           </div>
           <h2 className="text-4xl font-black text-white lg:text-5xl">{content.title}</h2>
-          <p className="text-lg font-medium text-zinc-400">{content.subtitle}</p>
+          <p className="text-lg font-medium text-zinc-300">{content.subtitle}</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -111,7 +111,7 @@ export default function Advantages({ locale }: { locale: string }) {
                 {item.number}
               </div>
               <h3 className="mb-3 text-2xl font-black text-white">{item.title}</h3>
-              <p className="text-sm leading-relaxed text-zinc-400">{item.desc}</p>
+              <p className="text-sm leading-relaxed text-zinc-300">{item.desc}</p>
             </div>
           ))}
         </div>

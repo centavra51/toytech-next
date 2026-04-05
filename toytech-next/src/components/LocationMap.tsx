@@ -16,7 +16,7 @@ export default function LocationMap({ t }: { t: Translation }) {
           <h2 className="text-4xl font-black text-white lg:text-5xl">
             ToyTech, Chisinau
           </h2>
-          <p className="mx-auto max-w-2xl text-lg font-medium text-zinc-400">
+          <p className="mx-auto max-w-2xl text-lg font-medium text-zinc-300">
             {t.common.address}
           </p>
         </div>
@@ -26,7 +26,7 @@ export default function LocationMap({ t }: { t: Translation }) {
             <div className="flex items-start gap-4 rounded-2xl border border-zinc-800 bg-zinc-950 p-5">
               <MapPin className="mt-1 h-5 w-5 text-red-500" />
               <div>
-                <div className="text-sm font-black uppercase tracking-[0.2em] text-zinc-500">
+                <div className="text-sm font-black uppercase tracking-[0.2em] text-zinc-400">
                   Address
                 </div>
                 <div className="mt-2 font-medium text-zinc-200">{t.common.address}</div>
@@ -36,7 +36,7 @@ export default function LocationMap({ t }: { t: Translation }) {
             <div className="flex items-start gap-4 rounded-2xl border border-zinc-800 bg-zinc-950 p-5">
               <Phone className="mt-1 h-5 w-5 text-red-500" />
               <div>
-                <div className="text-sm font-black uppercase tracking-[0.2em] text-zinc-500">
+                <div className="text-sm font-black uppercase tracking-[0.2em] text-zinc-400">
                   Phone
                 </div>
                 <a href={toTelHref(t.common.phone)} className="mt-2 block font-medium text-zinc-200">
@@ -48,7 +48,7 @@ export default function LocationMap({ t }: { t: Translation }) {
             <div className="flex items-start gap-4 rounded-2xl border border-zinc-800 bg-zinc-950 p-5">
               <Clock3 className="mt-1 h-5 w-5 text-red-500" />
               <div>
-                <div className="text-sm font-black uppercase tracking-[0.2em] text-zinc-500">
+                <div className="text-sm font-black uppercase tracking-[0.2em] text-zinc-400">
                   Hours
                 </div>
                 <div className="mt-2 space-y-1 font-medium text-zinc-200">
