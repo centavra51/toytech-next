@@ -24,5 +24,20 @@
     "badge": "ToyTech Hybrid Specialist",
     "price": "10+ years",
     "price_text": "Warranty on all work"
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "Questions and Answers",
+    "subtitle": "Everything you need to know before your visit",
+    "q1": "How much does diagnostics cost?",
+    "a1": "The cost depends on the complexity of the problem. The exact price is clarified after an initial inspection.",
+    "q2": "How long does the repair take?",
+    "a2": "From a few hours to several days depending on complexity.",
+    "q3": "Is there a warranty?",
+    "a3": "Yes, we provide a warranty on all completed work.",
+    "q4": "Do you work with Toyota hybrids?",
+    "a4": "Yes, we specialize in Toyota and Lexus hybrids, including Prius, Camry, RAV4, and the entire line of hybrid models.",
+    "q5": "Where are you located?",
+    "a5": "Our service is located at: Chisinau, Grenoble 7 str. We look forward to seeing you!"
   }
 }

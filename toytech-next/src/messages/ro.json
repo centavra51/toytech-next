@@ -24,5 +24,20 @@
     "badge": "ToyTech Hybrid Specialist",
     "price": "10+ ani",
     "price_text": "Garanție pentru toate lucrările"
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "Întrebări și răspunsuri",
+    "subtitle": "Tot ce trebuie să știți înainte de vizită",
+    "q1": "Cât costă diagnoză?",
+    "a1": "Costul depinde de complexitatea problemei. Prețul exact se clarifică după o inspecție inițială.",
+    "q2": "Cât durează reparația?",
+    "a2": "De la câteva ore la câteva zile în funcție de complexitate.",
+    "q3": "Aveți garanție?",
+    "a3": "Da, oferim garanție pentru toate lucrările efectuate.",
+    "q4": "Lucrați cu hibrizi Toyota?",
+    "a4": "Da, ne specializăm în hibrizi Toyota și Lexus, inclusiv Prius, Camry, RAV4 și toată linia de modele hibride.",
+    "q5": "Unde vă aflați?",
+    "a5": "Serviciul nostru este situat la adresa: Chișinău, str. Grenoble 7. Vă așteptăm!"
   }
 }
