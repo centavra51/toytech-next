@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -22,6 +23,7 @@ import Navbar from "../../../../components/Navbar";
 import Footer from "../../../../components/Footer";
 import AppointmentForm from "../../../../components/AppointmentForm";
 import { getSiteContent } from "../../../../lib/site-content";
+import { relatedServices } from "../../../../lib/service-catalog";
 import type { Locale, Translation } from "../../../../lib/i18n";
 
 const iconMap = {
@@ -83,6 +85,52 @@ function getTextParagraphs(text: string) {
     .filter(Boolean);
 }
 
+function getRelatedLabel(locale: string) {
+  if (locale === "ru") {
+    return {
+      title: "Полезно также",
+      subtitle: "Связанные услуги, которые часто идут рядом с этой работой.",
+    };
+  }
+
+  if (locale === "en") {
+    return {
+      title: "Also useful",
+      subtitle: "Related services that are often needed together with this job.",
+    };
+  }
+
+  return {
+    title: "Util și împreună",
+    subtitle: "Servicii conexe care sunt des necesare împreună cu această lucrare.",
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const content = await getSiteContent();
+  const svcInfo = content.services.find((serviceItem) => serviceItem.slug === slug);
+  const service = svcInfo
+    ? getServiceTranslation(svcInfo.id, locale, content.translations)
+    : null;
+
+  if (!svcInfo || !service) {
+    return {};
+  }
+
+  const description = getTextParagraphs(service.long_desc || service.desc)[0] ?? service.desc;
+
+  return {
+    title: service.seoTitle ?? service.title,
+    description,
+    keywords: service.keywords,
+  };
+}
+
 export default async function ServicePage({
   params,
 }: {
@@ -103,6 +151,25 @@ export default async function ServicePage({
   const Icon = iconMap[svcInfo.icon as keyof typeof iconMap] || Cog;
   const serviceImage = svcInfo.image?.trim();
   const serviceParagraphs = getTextParagraphs(service.long_desc || service.desc);
+  const relatedLabel = getRelatedLabel(locale);
+  const relatedItems = (relatedServices[svcInfo.id as keyof typeof relatedServices] ?? [])
+    .map((relatedId) => {
+      const relatedInfo = content.services.find((serviceItem) => serviceItem.id === relatedId);
+      const relatedService = relatedInfo
+        ? getServiceTranslation(relatedInfo.id, locale, content.translations)
+        : null;
+
+      if (!relatedInfo || !relatedService) {
+        return null;
+      }
+
+      return {
+        slug: relatedInfo.slug,
+        title: relatedService.title,
+        desc: relatedService.desc,
+      };
+    })
+    .filter(Boolean) as Array<{ slug: string; title: string; desc: string }>;
 
   return (
     <main className="min-h-screen bg-zinc-950">
@@ -153,7 +220,7 @@ export default async function ServicePage({
 
               <div className="space-y-4">
                 <h1 className="text-4xl font-black text-white lg:text-6xl">
-                  {service.title}
+                  {service.seoTitle ?? service.title}
                 </h1>
                 <div className="inline-block rounded-full bg-red-600/10 px-4 py-1.5 text-sm font-black uppercase tracking-widest text-red-600">
                   {service.price}
@@ -165,6 +232,34 @@ export default async function ServicePage({
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
+
+              {relatedItems.length > 0 && (
+                <div className="space-y-6 rounded-[2rem] border border-zinc-800 bg-zinc-900/70 p-6">
+                  <div className="space-y-2">
+                    <h2 className="text-2xl font-black text-white">{relatedLabel.title}</h2>
+                    <p className="text-sm font-medium text-zinc-400">
+                      {relatedLabel.subtitle}
+                    </p>
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-3">
+                    {relatedItems.map((item) => (
+                      <Link
+                        key={item.slug}
+                        href={`/${locale}/services/${item.slug}`}
+                        className="group rounded-[1.5rem] border border-zinc-800 bg-zinc-950 p-5 transition-all hover:-translate-y-0.5 hover:border-red-600/50"
+                      >
+                        <div className="space-y-3">
+                          <h3 className="text-lg font-black text-white transition-colors group-hover:text-red-500">
+                            {item.title}
+                          </h3>
+                          <p className="text-sm leading-relaxed text-zinc-400">{item.desc}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div className="space-y-6 pt-6">
                 <h2 className="text-2xl font-black text-white">

@@ -8,6 +8,8 @@ type ServiceTranslation = {
   desc: string;
   price: string;
   long_desc: string;
+  seoTitle?: string;
+  keywords?: string[];
 };
 
 export type Translation = {

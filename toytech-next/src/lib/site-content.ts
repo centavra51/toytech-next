@@ -1,5 +1,6 @@
 import { getTranslations, locales, type Locale, type Translation } from "./i18n";
 import defaultServicesJson from "./services.json";
+import { applyServiceCatalog } from "./service-catalog";
 import { createSupabaseServerComponentClient, isSupabaseConfigured } from "./supabase/server";
 
 export type ServiceDefinition = {
@@ -14,9 +15,12 @@ export type SiteContent = {
   services: ServiceDefinition[];
 };
 
-const defaultTranslations = Object.fromEntries(
-  locales.map((locale) => [locale, getTranslations(locale)]),
-) as Record<Locale, Translation>;
+const defaultTranslations = applyServiceCatalog(
+  Object.fromEntries(locales.map((locale) => [locale, getTranslations(locale)])) as Record<
+    Locale,
+    Translation
+  >,
+);
 
 export const defaultSiteContent: SiteContent = {
   translations: defaultTranslations,
@@ -29,10 +33,10 @@ function normalizeSiteContent(data: Partial<SiteContent> | null | undefined): Si
   ) as Record<string, ServiceDefinition>;
 
   return {
-    translations: {
+    translations: applyServiceCatalog({
       ...defaultSiteContent.translations,
       ...(data?.translations ?? {}),
-    } as Record<Locale, Translation>,
+    } as Record<Locale, Translation>),
     services: Array.isArray(data?.services) && data.services.length > 0
       ? (data.services as ServiceDefinition[]).map((service) => ({
           ...defaultServicesById[service.id],
