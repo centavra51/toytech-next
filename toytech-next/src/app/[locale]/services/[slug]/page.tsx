@@ -76,6 +76,13 @@ function getServiceTranslation(
   return null;
 }
 
+function getTextParagraphs(text: string) {
+  return text
+    .split(/\n\s*\n/)
+    .map((paragraph) => paragraph.replace(/\n/g, " ").trim())
+    .filter(Boolean);
+}
+
 export default async function ServicePage({
   params,
 }: {
@@ -95,6 +102,7 @@ export default async function ServicePage({
 
   const Icon = iconMap[svcInfo.icon as keyof typeof iconMap] || Cog;
   const serviceImage = svcInfo.image?.trim();
+  const serviceParagraphs = getTextParagraphs(service.long_desc || service.desc);
 
   return (
     <main className="min-h-screen bg-zinc-950">
@@ -152,9 +160,11 @@ export default async function ServicePage({
                 </div>
               </div>
 
-              <p className="text-xl font-medium leading-relaxed text-zinc-400">
-                {service.long_desc || service.desc}
-              </p>
+              <div className="space-y-5 text-xl font-medium leading-relaxed text-zinc-400">
+                {serviceParagraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
 
               <div className="space-y-6 pt-6">
                 <h2 className="text-2xl font-black text-white">

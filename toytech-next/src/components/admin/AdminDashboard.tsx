@@ -829,7 +829,7 @@ export function AdminDashboard({
                         }
                       />
                       <Field
-                        label="Long description"
+                        label="Long description (empty line = new paragraph)"
                         value={translation?.long_desc ?? ""}
                         multiline
                         onChange={(value) =>
