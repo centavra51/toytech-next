@@ -59,12 +59,13 @@ export default function LocationMap({ t }: { t: Translation }) {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[2.5rem] border border-zinc-800 bg-zinc-900">
+          <div className="overflow-hidden rounded-[2.5rem] border border-zinc-800 bg-zinc-900 aspect-video">
             <iframe
               src="https://www.google.com/maps?q=46.991521,28.821943&hl=ru&z=16&output=embed"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="h-[520px] w-full"
+              className="h-full w-full"
+              title="ToyTech Location on Google Maps"
             />
           </div>
         </div>

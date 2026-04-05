@@ -78,6 +78,8 @@ export default function Hero({ t }: HeroProps) {
                 src="/images/hero image.jpg"
                 alt="ToyTech Hybrid Specialist"
                 fill
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 45vw"
                 className="object-cover transition-opacity duration-500 group-hover:opacity-90"
               />
 

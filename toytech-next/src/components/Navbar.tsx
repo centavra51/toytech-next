@@ -60,9 +60,9 @@ export default function Navbar({ locale, t }: NavbarProps) {
     isServicePage ? `/${locale}${href}` : href;
 
   const localeOptions = {
-    ro: { flag: "https://flagcdn.com/ro.svg", name: "Romana" },
-    ru: { flag: "https://flagcdn.com/ru.svg", name: "Русский" },
-    en: { flag: "https://flagcdn.com/gb.svg", name: "English" },
+    ro: { flag: "🇷🇴", name: "Romana" },
+    ru: { flag: "🇷🇺", name: "Русский" },
+    en: { flag: "🇬🇧", name: "English" },
   };
 
   return (
@@ -100,13 +100,9 @@ export default function Navbar({ locale, t }: NavbarProps) {
               onClick={() => setIsLangOpen((prev) => !prev)}
               className="flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition-all hover:border-red-600"
             >
-              <Image
-                src={localeOptions[locale as keyof typeof localeOptions]?.flag}
-                className="rounded-sm object-cover"
-                alt={locale}
-                width={20}
-                height={14}
-              />
+              <span className="text-lg">
+                {localeOptions[locale as keyof typeof localeOptions]?.flag}
+              </span>
               <span className="uppercase">{locale}</span>
               <ChevronDown
                 className={`h-4 w-4 transition-transform ${isLangOpen ? "rotate-180" : ""}`}
@@ -126,13 +122,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
                           : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
                       }`}
                     >
-                      <Image
-                        src={localeOptions[key].flag}
-                        className="rounded-sm object-cover"
-                        alt={key}
-                        width={20}
-                        height={14}
-                      />
+                      <span className="text-lg">{localeOptions[key].flag}</span>
                       {localeOptions[key].name}
                     </button>
                   ),

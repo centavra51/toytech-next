@@ -27,7 +27,13 @@ export default function About({ t }: AboutProps) {
           {/* Image side */}
           <div className="relative">
             <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-zinc-800">
-              <Image src="/images/master.png" alt="ToyTech Team" fill className="object-cover" />
+              <Image 
+                src="/images/master.png" 
+                alt="ToyTech Team" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover" 
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent" />
             </div>
             
