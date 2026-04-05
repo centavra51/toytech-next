@@ -200,6 +200,8 @@ export default async function ServicePage({
                         src={serviceImage}
                         alt={serviceImageAlt}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 70vw, 800px"
+                        quality={85}
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
                     ) : (
