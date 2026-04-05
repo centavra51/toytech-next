@@ -55,6 +55,10 @@ export default function Navbar({ locale, t }: NavbarProps) {
     { href: "#faq", label: t.nav.faq },
   ];
 
+  const isServicePage = pathname.includes("/services/");
+  const resolveNavHref = (href: string) =>
+    isServicePage ? `/${locale}${href}` : href;
+
   const localeOptions = {
     ro: { flag: "https://flagcdn.com/ro.svg", name: "Romana" },
     ru: { flag: "https://flagcdn.com/ru.svg", name: "Русский" },
@@ -82,7 +86,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
           {navLinks.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={resolveNavHref(link.href)}
               className="whitespace-nowrap text-sm font-semibold uppercase tracking-[0.08em] text-zinc-300 transition-colors hover:text-white"
             >
               {link.label}
@@ -145,7 +149,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
           </a>
 
           <a
-            href="#appointment-form"
+            href={resolveNavHref("#appointment-form")}
             className="shrink-0 rounded-2xl bg-red-600 px-8 py-3 font-black text-white shadow-lg shadow-red-600/20 transition-all hover:-translate-y-0.5 hover:bg-red-700"
           >
             {t.nav.book}
@@ -198,7 +202,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
         {navLinks.map((link) => (
           <a
             key={link.href}
-            href={link.href}
+            href={resolveNavHref(link.href)}
             onClick={() => setIsMenuOpen(false)}
             className="text-center text-2xl font-bold transition-colors hover:text-red-600"
           >
@@ -231,7 +235,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
         </div>
 
         <a
-          href="#appointment-form"
+          href={resolveNavHref("#appointment-form")}
           onClick={() => setIsMenuOpen(false)}
           className="mt-4 rounded-2xl bg-red-600 px-10 py-4 text-lg font-black text-white shadow-xl shadow-red-600/30"
         >

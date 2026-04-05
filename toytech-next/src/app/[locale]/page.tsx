@@ -33,7 +33,12 @@ export default async function Home({ params }: Props) {
       </div>
 
       <div id="services">
-        <Services locale={locale} t={t} servicesData={content.services} />
+        <Services
+          locale={locale}
+          t={t}
+          servicesData={content.services}
+          translations={content.translations}
+        />
       </div>
 
       <Advantages locale={locale} />

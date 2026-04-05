@@ -22,6 +22,7 @@ import Navbar from "../../../../components/Navbar";
 import Footer from "../../../../components/Footer";
 import AppointmentForm from "../../../../components/AppointmentForm";
 import { getSiteContent } from "../../../../lib/site-content";
+import type { Locale, Translation } from "../../../../lib/i18n";
 
 const iconMap = {
   "battery-charging": BatteryCharging,
@@ -52,6 +53,29 @@ export async function generateStaticParams() {
   return params;
 }
 
+function getServiceTranslation(
+  serviceId: string,
+  locale: string,
+  translations: Record<Locale, Translation>,
+) {
+  const orderedLocales = [
+    locale,
+    ...Object.keys(translations).filter((itemLocale) => itemLocale !== locale),
+  ];
+
+  for (const currentLocale of orderedLocales) {
+    const item = translations[currentLocale as Locale]?.services?.[
+      serviceId as keyof Translation["services"]
+    ] as Translation["services"]["s1"] | undefined;
+
+    if (item && (item.title || item.desc || item.long_desc || item.price)) {
+      return item;
+    }
+  }
+
+  return null;
+}
+
 export default async function ServicePage({
   params,
 }: {
@@ -62,7 +86,7 @@ export default async function ServicePage({
   const t = content.translations[locale as keyof typeof content.translations] ?? content.translations.ro;
   const svcInfo = content.services.find((serviceItem) => serviceItem.slug === slug);
   const service = svcInfo
-    ? (t.services[svcInfo.id as keyof typeof t.services] as typeof t.services.s1)
+    ? getServiceTranslation(svcInfo.id, locale, content.translations)
     : null;
 
   if (!service || !svcInfo) {

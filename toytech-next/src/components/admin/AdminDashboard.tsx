@@ -11,6 +11,7 @@ import {
   Trash2,
   MessageSquareQuote,
   CircleHelp,
+  ChevronDown,
 } from "lucide-react";
 import type { Locale, Translation } from "../../lib/i18n";
 import { locales } from "../../lib/i18n";
@@ -259,11 +260,28 @@ export function AdminDashboard({
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    Common: false,
+    "Navigation and hero": false,
+    "About and CTA": false,
+    "Reviews and FAQ": false,
+    "Footer and forms": false,
+    Reviews: false,
+    FAQ: false,
+    "Service cards": true,
+  });
 
   const currentTranslation = useMemo(
     () => content.translations[selectedLocale],
     [content.translations, selectedLocale],
   );
+
+  const toggleSection = (sectionKey: string) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [sectionKey]: !prev[sectionKey],
+    }));
+  };
 
   const reviewKeys = useMemo(
     () => getNumberedKeys(currentTranslation.reviews as unknown as TranslationRecord, "r"),
@@ -536,18 +554,30 @@ export function AdminDashboard({
               key={group.title}
               className="rounded-[2rem] border border-zinc-800 bg-zinc-900 p-6"
             >
-              <h2 className="mb-5 text-2xl font-black">{group.title}</h2>
-              <div className="grid gap-4 md:grid-cols-2">
-                {group.fields.map((field) => (
-                  <Field
-                    key={field.path}
-                    label={field.label}
-                    multiline={field.multiline}
-                    value={String(getValue(currentTranslation, field.path) ?? "")}
-                    onChange={(value) => handleFieldChange(field.path, value)}
-                  />
-                ))}
-              </div>
+              <button
+                onClick={() => toggleSection(group.title)}
+                className="mb-5 flex w-full items-center justify-between gap-4 text-left"
+              >
+                <h2 className="text-2xl font-black">{group.title}</h2>
+                <ChevronDown
+                  className={`h-5 w-5 text-zinc-500 transition-transform ${
+                    openSections[group.title] ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {openSections[group.title] && (
+                <div className="grid gap-4 md:grid-cols-2">
+                  {group.fields.map((field) => (
+                    <Field
+                      key={field.path}
+                      label={field.label}
+                      multiline={field.multiline}
+                      value={String(getValue(currentTranslation, field.path) ?? "")}
+                      onChange={(value) => handleFieldChange(field.path, value)}
+                    />
+                  ))}
+                </div>
+              )}
             </section>
           ))}
 
@@ -567,50 +597,66 @@ export function AdminDashboard({
               </button>
             </div>
 
-            <div className="space-y-4">
-              {reviewKeys.map((reviewKey) => {
-                const review = (currentTranslation.reviews as unknown as Record<string, ReviewEntry>)[reviewKey];
+            <button
+              onClick={() => toggleSection("Reviews")}
+              className="mb-5 flex w-full items-center justify-between gap-4 text-left"
+            >
+              <span className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">
+                Review entries
+              </span>
+              <ChevronDown
+                className={`h-5 w-5 text-zinc-500 transition-transform ${
+                  openSections.Reviews ? "rotate-180" : ""
+                }`}
+              />
+            </button>
 
-                return (
-                  <div
-                    key={reviewKey}
-                    className="space-y-4 rounded-2xl border border-zinc-800 bg-zinc-950 p-4"
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">
-                        <MessageSquareQuote className="h-4 w-4 text-red-400" />
-                        {reviewKey}
+            {openSections.Reviews && (
+              <div className="space-y-4">
+                {reviewKeys.map((reviewKey) => {
+                  const review = (currentTranslation.reviews as unknown as Record<string, ReviewEntry>)[reviewKey];
+
+                  return (
+                    <div
+                      key={reviewKey}
+                      className="space-y-4 rounded-2xl border border-zinc-800 bg-zinc-950 p-4"
+                    >
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">
+                          <MessageSquareQuote className="h-4 w-4 text-red-400" />
+                          {reviewKey}
+                        </div>
+
+                        <button
+                          onClick={() => removeReview(reviewKey)}
+                          className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-zinc-400 transition-colors hover:border-red-600 hover:text-white"
+                        >
+                          <Trash2 className="h-4 w-4 text-red-400" />
+                          Delete
+                        </button>
                       </div>
 
-                      <button
-                        onClick={() => removeReview(reviewKey)}
-                        className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-zinc-400 transition-colors hover:border-red-600 hover:text-white"
-                      >
-                        <Trash2 className="h-4 w-4 text-red-400" />
-                        Delete
-                      </button>
+                      <Field
+                        label="Review text"
+                        value={review?.text ?? ""}
+                        multiline
+                        onChange={(value) => updateReview(reviewKey, "text", value)}
+                      />
+                      <Field
+                        label="Author"
+                        value={review?.author ?? ""}
+                        onChange={(value) => updateReview(reviewKey, "author", value)}
+                      />
+                      <Field
+                        label="Car"
+                        value={review?.car ?? ""}
+                        onChange={(value) => updateReview(reviewKey, "car", value)}
+                      />
                     </div>
-
-                    <Field
-                      label="Review text"
-                      value={review?.text ?? ""}
-                      multiline
-                      onChange={(value) => updateReview(reviewKey, "text", value)}
-                    />
-                    <Field
-                      label="Author"
-                      value={review?.author ?? ""}
-                      onChange={(value) => updateReview(reviewKey, "author", value)}
-                    />
-                    <Field
-                      label="Car"
-                      value={review?.car ?? ""}
-                      onChange={(value) => updateReview(reviewKey, "car", value)}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </section>
 
           <section className="rounded-[2rem] border border-zinc-800 bg-zinc-900 p-6">
@@ -629,41 +675,57 @@ export function AdminDashboard({
               </button>
             </div>
 
-            <div className="space-y-4">
-              {faqNumbers.map((entryNumber) => (
-                <div
-                  key={entryNumber}
-                  className="space-y-4 rounded-2xl border border-zinc-800 bg-zinc-950 p-4"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">
-                      <CircleHelp className="h-4 w-4 text-red-400" />
-                      FAQ {entryNumber}
+            <button
+              onClick={() => toggleSection("FAQ")}
+              className="mb-5 flex w-full items-center justify-between gap-4 text-left"
+            >
+              <span className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">
+                FAQ entries
+              </span>
+              <ChevronDown
+                className={`h-5 w-5 text-zinc-500 transition-transform ${
+                  openSections.FAQ ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {openSections.FAQ && (
+              <div className="space-y-4">
+                {faqNumbers.map((entryNumber) => (
+                  <div
+                    key={entryNumber}
+                    className="space-y-4 rounded-2xl border border-zinc-800 bg-zinc-950 p-4"
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">
+                        <CircleHelp className="h-4 w-4 text-red-400" />
+                        FAQ {entryNumber}
+                      </div>
+
+                      <button
+                        onClick={() => removeFaq(entryNumber)}
+                        className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-zinc-400 transition-colors hover:border-red-600 hover:text-white"
+                      >
+                        <Trash2 className="h-4 w-4 text-red-400" />
+                        Delete
+                      </button>
                     </div>
 
-                    <button
-                      onClick={() => removeFaq(entryNumber)}
-                      className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-zinc-400 transition-colors hover:border-red-600 hover:text-white"
-                    >
-                      <Trash2 className="h-4 w-4 text-red-400" />
-                      Delete
-                    </button>
+                    <Field
+                      label="Question"
+                      value={String(getValue(currentTranslation, `faq.q${entryNumber}`) ?? "")}
+                      onChange={(value) => updateFaq(entryNumber, "q", value)}
+                    />
+                    <Field
+                      label="Answer"
+                      value={String(getValue(currentTranslation, `faq.a${entryNumber}`) ?? "")}
+                      multiline
+                      onChange={(value) => updateFaq(entryNumber, "a", value)}
+                    />
                   </div>
-
-                  <Field
-                    label="Question"
-                    value={String(getValue(currentTranslation, `faq.q${entryNumber}`) ?? "")}
-                    onChange={(value) => updateFaq(entryNumber, "q", value)}
-                  />
-                  <Field
-                    label="Answer"
-                    value={String(getValue(currentTranslation, `faq.a${entryNumber}`) ?? "")}
-                    multiline
-                    onChange={(value) => updateFaq(entryNumber, "a", value)}
-                  />
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </section>
         </div>
 
@@ -683,87 +745,102 @@ export function AdminDashboard({
                 Add service
               </button>
             </div>
-            <div className="space-y-6">
-              {content.services.map((service, index) => {
-                const translation = (currentTranslation.services as unknown as Record<string, Translation["services"]["s1"]>)[
-                  service.id
-                ];
+            <button
+              onClick={() => toggleSection("Service cards")}
+              className="mb-5 flex w-full items-center justify-between gap-4 text-left"
+            >
+              <span className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">
+                Service entries
+              </span>
+              <ChevronDown
+                className={`h-5 w-5 text-zinc-500 transition-transform ${
+                  openSections["Service cards"] ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            {openSections["Service cards"] && (
+              <div className="space-y-6">
+                {content.services.map((service, index) => {
+                  const translation = (currentTranslation.services as unknown as Record<string, Translation["services"]["s1"]>)[
+                    service.id
+                  ];
 
-                return (
-                  <div
-                    key={`${service.id}-${index}`}
-                    className="space-y-4 rounded-2xl border border-zinc-800 bg-zinc-950 p-4"
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">
-                        <Wrench className="h-4 w-4 text-red-400" />
-                        {service.id}
+                  return (
+                    <div
+                      key={`${service.id}-${index}`}
+                      className="space-y-4 rounded-2xl border border-zinc-800 bg-zinc-950 p-4"
+                    >
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">
+                          <Wrench className="h-4 w-4 text-red-400" />
+                          {service.id}
+                        </div>
+
+                        <button
+                          onClick={() => removeService(service.id)}
+                          className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-zinc-400 transition-colors hover:border-red-600 hover:text-white"
+                        >
+                          <Trash2 className="h-4 w-4 text-red-400" />
+                          Delete
+                        </button>
                       </div>
 
-                      <button
-                        onClick={() => removeService(service.id)}
-                        className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-zinc-400 transition-colors hover:border-red-600 hover:text-white"
-                      >
-                        <Trash2 className="h-4 w-4 text-red-400" />
-                        Delete
-                      </button>
+                      <Field
+                        label="Slug"
+                        value={service.slug}
+                        onChange={(value) =>
+                          handleServiceDefinitionChange(index, "slug", value)
+                        }
+                      />
+                      <Field
+                        label="Icon"
+                        value={service.icon}
+                        onChange={(value) =>
+                          handleServiceDefinitionChange(index, "icon", value)
+                        }
+                      />
+                      <Field
+                        label="Image path or URL"
+                        value={service.image ?? ""}
+                        onChange={(value) =>
+                          handleServiceDefinitionChange(index, "image", value)
+                        }
+                      />
+                      <Field
+                        label="Title"
+                        value={translation?.title ?? ""}
+                        onChange={(value) =>
+                          handleServiceTranslationChange(service.id, "title", value)
+                        }
+                      />
+                      <Field
+                        label="Short description"
+                        value={translation?.desc ?? ""}
+                        multiline
+                        onChange={(value) =>
+                          handleServiceTranslationChange(service.id, "desc", value)
+                        }
+                      />
+                      <Field
+                        label="Price badge"
+                        value={translation?.price ?? ""}
+                        onChange={(value) =>
+                          handleServiceTranslationChange(service.id, "price", value)
+                        }
+                      />
+                      <Field
+                        label="Long description"
+                        value={translation?.long_desc ?? ""}
+                        multiline
+                        onChange={(value) =>
+                          handleServiceTranslationChange(service.id, "long_desc", value)
+                        }
+                      />
                     </div>
-
-                    <Field
-                      label="Slug"
-                      value={service.slug}
-                      onChange={(value) =>
-                        handleServiceDefinitionChange(index, "slug", value)
-                      }
-                    />
-                    <Field
-                      label="Icon"
-                      value={service.icon}
-                      onChange={(value) =>
-                        handleServiceDefinitionChange(index, "icon", value)
-                      }
-                    />
-                    <Field
-                      label="Image path or URL"
-                      value={service.image ?? ""}
-                      onChange={(value) =>
-                        handleServiceDefinitionChange(index, "image", value)
-                      }
-                    />
-                    <Field
-                      label="Title"
-                      value={translation?.title ?? ""}
-                      onChange={(value) =>
-                        handleServiceTranslationChange(service.id, "title", value)
-                      }
-                    />
-                    <Field
-                      label="Short description"
-                      value={translation?.desc ?? ""}
-                      multiline
-                      onChange={(value) =>
-                        handleServiceTranslationChange(service.id, "desc", value)
-                      }
-                    />
-                    <Field
-                      label="Price badge"
-                      value={translation?.price ?? ""}
-                      onChange={(value) =>
-                        handleServiceTranslationChange(service.id, "price", value)
-                      }
-                    />
-                    <Field
-                      label="Long description"
-                      value={translation?.long_desc ?? ""}
-                      multiline
-                      onChange={(value) =>
-                        handleServiceTranslationChange(service.id, "long_desc", value)
-                      }
-                    />
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </section>
         </div>
       </div>

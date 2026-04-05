@@ -19,6 +19,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import type { Translation } from "../lib/i18n";
+import type { Locale } from "../lib/i18n";
 
 type ServiceItem = {
   id: string;
@@ -30,6 +31,7 @@ interface ServicesProps {
   locale: string;
   t: Translation;
   servicesData: ServiceItem[];
+  translations: Record<Locale, Translation>;
 }
 
 const iconMap: Record<string, LucideIcon> = {
@@ -47,7 +49,30 @@ const iconMap: Record<string, LucideIcon> = {
   "air-vent": AirVent,
 };
 
-export default function Services({ locale, t, servicesData }: ServicesProps) {
+function getServiceTranslation(
+  serviceId: string,
+  locale: string,
+  translations: Record<Locale, Translation>,
+) {
+  const orderedLocales = [
+    locale,
+    ...Object.keys(translations).filter((itemLocale) => itemLocale !== locale),
+  ] as string[];
+
+  for (const currentLocale of orderedLocales) {
+    const item = translations[currentLocale as Locale]?.services?.[
+      serviceId as keyof Translation["services"]
+    ] as Translation["services"]["s1"] | undefined;
+
+    if (item && (item.title || item.desc || item.long_desc || item.price)) {
+      return item;
+    }
+  }
+
+  return null;
+}
+
+export default function Services({ locale, t, servicesData, translations }: ServicesProps) {
   const [showAll, setShowAll] = useState(false);
   const visibleServices = showAll ? servicesData : servicesData.slice(0, 6);
 
@@ -70,9 +95,7 @@ export default function Services({ locale, t, servicesData }: ServicesProps) {
           {visibleServices.map((svc) => {
             const IconComponent =
               iconMap[svc.icon as keyof typeof iconMap] || Cog || ArrowRight;
-            const item = t.services[
-              svc.id as keyof typeof t.services
-            ] as typeof t.services.s1;
+            const item = getServiceTranslation(svc.id, locale, translations);
 
             if (!item) {
               return null;
