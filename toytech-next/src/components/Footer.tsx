@@ -173,7 +173,7 @@ export default function Footer({ t, locale }: FooterProps) {
             © {currentYear} {t.footer.company}. {t.footer.copyright}
           </p>
           <p className="mt-4 text-xs font-medium tracking-[0.14em] text-zinc-700">
-            Разработано{" "}
+            Developed{" "}
             <a
               href="http://da.amz-creator.com/"
               target="_blank"
