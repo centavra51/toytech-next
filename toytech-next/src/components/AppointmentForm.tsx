@@ -125,12 +125,13 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
 
         <div className="grid gap-6 md:grid-cols-2">
           <div className="space-y-2">
-            <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
+            <label htmlFor="appt-name" className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
               {t.form.nameLabel}
             </label>
             <div className="relative">
               <User className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-400" />
               <input
+                id="appt-name"
                 required
                 name="name"
                 type="text"
@@ -141,12 +142,13 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
           </div>
 
           <div className="space-y-2">
-            <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
+            <label htmlFor="appt-phone" className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
               {t.form.phoneLabel}
             </label>
             <div className="relative">
               <Phone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-400" />
               <input
+                id="appt-phone"
                 required
                 name="phone"
                 type="tel"
@@ -159,12 +161,13 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
 
         <div className="grid gap-6 md:grid-cols-2">
           <div className="space-y-2">
-            <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
+            <label htmlFor="appt-car" className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
               {t.form.carLabel}
             </label>
             <div className="relative">
               <Car className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-400" />
               <input
+                id="appt-car"
                 name="car"
                 type="text"
                 placeholder={t.form.carPlaceholder}
@@ -174,12 +177,13 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
           </div>
 
           <div className="space-y-2">
-            <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
+            <label htmlFor="appt-date" className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
               {t.form.dateLabel}
             </label>
             <div className="relative">
               <Calendar className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-400" />
               <input
+                id="appt-date"
                 name="date"
                 type="date"
                 className="w-full rounded-2xl border border-zinc-800 bg-zinc-950 py-4 pl-12 pr-4 font-medium text-white focus:border-red-600 focus:outline-none [color-scheme:dark]"
@@ -189,10 +193,11 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
         </div>
 
         <div className="space-y-2">
-          <label className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
+          <label htmlFor="appt-service" className="ml-1 text-xs font-black uppercase tracking-widest text-zinc-300">
             {t.form.serviceLabel}
           </label>
           <select
+            id="appt-service"
             name="service"
             defaultValue=""
             className="w-full rounded-2xl border border-zinc-800 bg-zinc-950 px-4 py-4 font-medium text-white focus:border-red-600 focus:outline-none"

@@ -245,6 +245,7 @@ export default function Gallery({ locale, socialLinks }: GalleryProps) {
                     href={href}
                     target="_blank"
                     rel="noreferrer"
+                    aria-label={card.action}
                     className="group relative overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-950 transition-all duration-300 hover:-translate-y-1 hover:border-red-600/50 hover:shadow-2xl hover:shadow-red-600/10"
                   >
                     <div className="relative h-80">
@@ -267,7 +268,7 @@ export default function Gallery({ locale, socialLinks }: GalleryProps) {
 
                     <div className="space-y-4 p-6">
                       <div className="space-y-2">
-                        <h4 className="text-2xl font-black text-white">{card.title}</h4>
+                        <h3 className="text-2xl font-black text-white">{card.title}</h3>
                         <p className="text-sm font-medium leading-relaxed text-zinc-400">
                           {card.desc}
                         </p>

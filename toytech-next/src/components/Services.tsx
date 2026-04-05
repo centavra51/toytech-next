@@ -143,10 +143,11 @@ export default function Services({ locale, t, servicesData, translations }: Serv
 
                   <Link
                     href={`/${locale}/services/${svc.slug}`}
+                    aria-label={`${t.services.btn_more} — ${item.title}`}
                     className="inline-flex items-center gap-2 border-b-2 border-zinc-800 pb-1 font-bold text-white transition-all group-hover:gap-4 group-hover:border-red-600"
                   >
                     <span>{t.services.btn_more}</span>
-                    <ArrowRight className="h-5 w-5 text-red-600" />
+                    <ArrowRight className="h-5 w-5 text-red-600" aria-hidden="true" />
                   </Link>
                 </div>
               </div>

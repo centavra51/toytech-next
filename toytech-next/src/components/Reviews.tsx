@@ -106,7 +106,7 @@ export default function Reviews({ t }: ReviewsProps) {
               </div>
               
               <div className="relative space-y-6">
-                <div className="flex gap-1" aria-label={`${r.rating} star rating`}>
+                <div role="img" className="flex gap-1" aria-label={`${r.rating} star rating`}>
                   {[...Array(r.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-amber-500 text-amber-500" aria-hidden="true" />
                   ))}
@@ -122,7 +122,7 @@ export default function Reviews({ t }: ReviewsProps) {
                   </div>
                   <div>
                     <div className="font-black text-white">{r.author}</div>
-                    <div className="text-zinc-500 text-sm font-bold uppercase tracking-wide">{r.car}</div>
+                    <div className="text-zinc-400 text-sm font-bold uppercase tracking-wide">{r.car}</div>
                   </div>
                 </div>
               </div>

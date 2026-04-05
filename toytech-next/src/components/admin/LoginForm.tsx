@@ -50,12 +50,13 @@ export function LoginForm({ configured }: { configured: boolean }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="space-y-2">
-        <label className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">
+        <label htmlFor="login-email" className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">
           Email
         </label>
         <div className="relative">
           <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-600" />
           <input
+            id="login-email"
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
@@ -67,12 +68,13 @@ export function LoginForm({ configured }: { configured: boolean }) {
       </div>
 
       <div className="space-y-2">
-        <label className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">
+        <label htmlFor="login-password" className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">
           Password
         </label>
         <div className="relative">
           <LockKeyhole className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-600" />
           <input
+            id="login-password"
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
