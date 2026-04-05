@@ -99,27 +99,42 @@ export default function Footer({ t, locale }: FooterProps) {
             <h4 className="text-xl font-black text-white">{t.footer.company}</h4>
             <ul className="space-y-4">
               <li>
-                <Link href={`/${locale}#advantages`} className="font-medium text-zinc-500 transition-colors hover:text-red-500">
+                <Link
+                  href={`/${locale}#advantages`}
+                  className="font-medium text-zinc-500 transition-colors hover:text-red-500"
+                >
                   {advantagesLabel}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}#about`} className="font-medium text-zinc-500 transition-colors hover:text-red-500">
+                <Link
+                  href={`/${locale}#about`}
+                  className="font-medium text-zinc-500 transition-colors hover:text-red-500"
+                >
                   {t.nav.about}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}#reviews`} className="font-medium text-zinc-500 transition-colors hover:text-red-500">
+                <Link
+                  href={`/${locale}#reviews`}
+                  className="font-medium text-zinc-500 transition-colors hover:text-red-500"
+                >
                   {t.nav.reviews}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}#faq`} className="font-medium text-zinc-500 transition-colors hover:text-red-500">
+                <Link
+                  href={`/${locale}#faq`}
+                  className="font-medium text-zinc-500 transition-colors hover:text-red-500"
+                >
                   {t.nav.faq}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}#services`} className="font-medium text-zinc-500 transition-colors hover:text-red-500">
+                <Link
+                  href={`/${locale}#services`}
+                  className="font-medium text-zinc-500 transition-colors hover:text-red-500"
+                >
                   {t.nav.services}
                 </Link>
               </li>
@@ -135,7 +150,10 @@ export default function Footer({ t, locale }: FooterProps) {
               </li>
               <li className="flex items-center gap-4">
                 <Smartphone className="h-6 w-6 text-red-600" />
-                <a href={toTelHref(t.common.phone)} className="text-lg font-black text-zinc-500 hover:text-white">
+                <a
+                  href={toTelHref(t.common.phone)}
+                  className="text-lg font-black text-zinc-500 hover:text-white"
+                >
                   {t.common.phone}
                 </a>
               </li>
@@ -152,7 +170,18 @@ export default function Footer({ t, locale }: FooterProps) {
 
         <div className="border-t border-zinc-900 pt-12 text-center">
           <p className="text-sm font-bold uppercase tracking-widest text-zinc-600">
-            В© {currentYear} {t.footer.company}. {t.footer.copyright}
+            © {currentYear} {t.footer.company}. {t.footer.copyright}
+          </p>
+          <p className="mt-4 text-xs font-medium tracking-[0.14em] text-zinc-700">
+            Разработано{" "}
+            <a
+              href="http://da.amz-creator.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-zinc-500 transition-colors hover:text-red-500"
+            >
+              DigitalArchitect
+            </a>
           </p>
         </div>
       </div>

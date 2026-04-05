@@ -241,8 +241,8 @@ const translations: Record<Locale, Translation> = {
       email: "toytechmd@gmail.com",
       hoursWeekdays: "Пн-Пт: 09:00 - 18:00",
       hoursSaturday: "Сб: 09:00 - 14:00",
-      instagram: "https://instagram.com/ToyTech.md",
-      facebook: "https://facebook.com/ToyTech.md",
+      instagram: "https://www.instagram.com/toytech.md/",
+      facebook: "https://www.facebook.com/ToyTech.md",
       tiktok: "https://tiktok.com/@toytech.md",
     },
     nav: {
@@ -449,8 +449,8 @@ const translations: Record<Locale, Translation> = {
       email: "toytechmd@gmail.com",
       hoursWeekdays: "Lun-Vin: 09:00 - 18:00",
       hoursSaturday: "Sam: 09:00 - 14:00",
-      instagram: "https://instagram.com/ToyTech.md",
-      facebook: "https://facebook.com/ToyTech.md",
+      instagram: "https://www.instagram.com/toytech.md/",
+      facebook: "https://www.facebook.com/ToyTech.md",
       tiktok: "https://tiktok.com/@toytech.md",
     },
     nav: {
@@ -657,8 +657,8 @@ const translations: Record<Locale, Translation> = {
       email: "toytechmd@gmail.com",
       hoursWeekdays: "Mon-Fri: 09:00 - 18:00",
       hoursSaturday: "Sat: 09:00 - 14:00",
-      instagram: "https://instagram.com/ToyTech.md",
-      facebook: "https://facebook.com/ToyTech.md",
+      instagram: "https://www.instagram.com/toytech.md/",
+      facebook: "https://www.facebook.com/ToyTech.md",
       tiktok: "https://tiktok.com/@toytech.md",
     },
     nav: {
