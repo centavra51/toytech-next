@@ -16,11 +16,10 @@ import {
   Wind,
   Zap,
 } from "lucide-react";
-import { getTranslations } from "../../../../lib/i18n";
-import servicesData from "../../../../lib/services.json";
 import Navbar from "../../../../components/Navbar";
 import Footer from "../../../../components/Footer";
 import AppointmentForm from "../../../../components/AppointmentForm";
+import { getSiteContent } from "../../../../lib/site-content";
 
 const iconMap = {
   "battery-charging": BatteryCharging,
@@ -39,10 +38,11 @@ const iconMap = {
 
 export async function generateStaticParams() {
   const locales = ["ru", "ro", "en"];
+  const content = await getSiteContent();
   const params: Array<{ locale: string; slug: string }> = [];
 
   for (const locale of locales) {
-    for (const svc of servicesData) {
+    for (const svc of content.services) {
       params.push({ locale, slug: svc.slug });
     }
   }
@@ -56,8 +56,9 @@ export default async function ServicePage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const t = getTranslations(locale);
-  const svcInfo = servicesData.find((serviceItem) => serviceItem.slug === slug);
+  const content = await getSiteContent();
+  const t = content.translations[locale as keyof typeof content.translations] ?? content.translations.ro;
+  const svcInfo = content.services.find((serviceItem) => serviceItem.slug === slug);
   const service = svcInfo
     ? (t.services[svcInfo.id as keyof typeof t.services] as typeof t.services.s1)
     : null;

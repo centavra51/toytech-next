@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
-import { getTranslations } from "../../lib/i18n";
+import { getLocaleContent } from "../../lib/site-content";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = getTranslations(locale);
+  const t = await getLocaleContent(locale);
   return {
     title: t.hero.title.replace(/<\/?[^>]+(>|$)/g, ""),
     description: t.hero.subtitle,

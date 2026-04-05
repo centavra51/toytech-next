@@ -7,6 +7,10 @@ const defaultLocale = 'ro';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  if (pathname.startsWith('/admin')) {
+    return NextResponse.next();
+  }
+
   // Check if the pathname is missing a locale
   const pathnameIsMissingLocale = locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
@@ -23,5 +27,5 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   // Matcher ignoring `/_next/` and `/api/`
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|images|logo_monolith.svg).*)'],
+  matcher: ['/((?!api|admin|_next/static|_next/image|favicon.ico|images|logo_monolith.svg).*)'],
 };

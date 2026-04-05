@@ -1,6 +1,4 @@
 import React from 'react';
-import { getTranslations } from '../../lib/i18n';
-import servicesData from '../../lib/services.json';
 import Navbar from '../../components/Navbar';
 import Hero from '../../components/Hero';
 import Services from '../../components/Services';
@@ -10,6 +8,7 @@ import FAQ from '../../components/FAQ';
 import CTA from '../../components/CTA';
 import Footer from '../../components/Footer';
 import AppointmentForm from '../../components/AppointmentForm';
+import { getSiteContent } from '../../lib/site-content';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -17,7 +16,8 @@ interface Props {
 
 export default async function Home({ params }: Props) {
   const { locale } = await params;
-  const t = getTranslations(locale);
+  const content = await getSiteContent();
+  const t = content.translations[locale as keyof typeof content.translations] ?? content.translations.ro;
 
   return (
     <main className="min-h-screen bg-zinc-950">
@@ -28,7 +28,7 @@ export default async function Home({ params }: Props) {
       </div>
 
       <div id="services">
-        <Services locale={locale} t={t} servicesData={servicesData} />
+        <Services locale={locale} t={t} servicesData={content.services} />
       </div>
 
       <div id="about">
