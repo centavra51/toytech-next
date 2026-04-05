@@ -127,7 +127,7 @@ export default async function ServicePage({
             </div>
 
             <div className="animate-in slide-in-from-right duration-500 lg:sticky lg:top-32">
-              <AppointmentForm t={t} />
+              <AppointmentForm t={t} services={content.services} />
             </div>
           </div>
         </div>

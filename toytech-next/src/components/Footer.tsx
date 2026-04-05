@@ -13,6 +13,11 @@ interface FooterProps {
 
 export default function Footer({ t, locale }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const advantagesLabel = {
+    ru: "Преимущества",
+    ro: "Avantaje",
+    en: "Advantages",
+  }[locale] ?? "Advantages";
   const topServices = [
     t.services.s1.title,
     t.services.s2.title,
@@ -25,7 +30,7 @@ export default function Footer({ t, locale }: FooterProps) {
       <div className="container mx-auto px-6">
         <div className="mb-16 grid gap-12 px-6 lg:grid-cols-4">
           <div className="col-span-2 space-y-8 lg:col-span-1">
-            <Link href={`/${locale}`} className="relative block h-16 w-64">
+            <Link href={`/${locale}`} className="relative block h-20 w-72">
               <Image src="/logo_monolith.svg" alt="ToyTech" fill className="object-contain" />
             </Link>
             <p className="max-w-xs font-medium leading-relaxed text-zinc-500">
@@ -76,6 +81,11 @@ export default function Footer({ t, locale }: FooterProps) {
           <div className="space-y-6">
             <h4 className="text-xl font-black text-white">{t.footer.company}</h4>
             <ul className="space-y-4">
+              <li>
+                <Link href={`/${locale}#advantages`} className="font-medium text-zinc-500 transition-colors hover:text-red-500">
+                  {advantagesLabel}
+                </Link>
+              </li>
               <li>
                 <Link href={`/${locale}#about`} className="font-medium text-zinc-500 transition-colors hover:text-red-500">
                   {t.nav.about}

@@ -36,8 +36,15 @@ export default function Navbar({ locale, t }: NavbarProps) {
     setIsMenuOpen(false);
   };
 
+  const advantagesLabel = {
+    ru: "Преимущества",
+    ro: "Avantaje",
+    en: "Advantages",
+  }[locale] ?? "Advantages";
+
   const navLinks = [
     { href: "#services", label: t.nav.services },
+    { href: "#advantages", label: advantagesLabel },
     { href: "#about", label: t.nav.about },
     { href: "#reviews", label: t.nav.reviews },
     { href: "#faq", label: t.nav.faq },
@@ -58,7 +65,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
       }`}
     >
       <div className="container mx-auto flex h-full items-center justify-between px-6">
-        <Link href={`/${locale}`} className="relative h-16 w-56 lg:h-20 lg:w-72">
+        <Link href={`/${locale}`} className="relative h-20 w-72 lg:h-24 lg:w-80">
           <Image
             src="/logo_monolith.svg"
             alt="ToyTech"
@@ -164,7 +171,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
           <X className="h-8 w-8" />
         </button>
 
-        <div className="relative mb-8 h-20 w-72">
+        <div className="relative mb-8 h-24 w-80">
           <Image
             src="/logo_monolith.svg"
             alt="ToyTech"

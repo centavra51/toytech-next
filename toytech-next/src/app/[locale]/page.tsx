@@ -2,12 +2,17 @@ import React from 'react';
 import Navbar from '../../components/Navbar';
 import Hero from '../../components/Hero';
 import Services from '../../components/Services';
+import Advantages from '../../components/Advantages';
+import ProcessSteps from '../../components/ProcessSteps';
+import BrandsMarquee from '../../components/BrandsMarquee';
 import About from '../../components/About';
+import Gallery from '../../components/Gallery';
 import Reviews from '../../components/Reviews';
 import FAQ from '../../components/FAQ';
 import CTA from '../../components/CTA';
 import Footer from '../../components/Footer';
 import AppointmentForm from '../../components/AppointmentForm';
+import LocationMap from '../../components/LocationMap';
 import { getSiteContent } from '../../lib/site-content';
 
 interface Props {
@@ -31,9 +36,15 @@ export default async function Home({ params }: Props) {
         <Services locale={locale} t={t} servicesData={content.services} />
       </div>
 
+      <Advantages locale={locale} />
+
+      <ProcessSteps locale={locale} />
+
       <div id="about">
         <About t={t} />
       </div>
+
+      <BrandsMarquee locale={locale} />
 
       <div id="reviews">
         <Reviews t={t} />
@@ -43,13 +54,17 @@ export default async function Home({ params }: Props) {
         <FAQ t={t} />
       </div>
 
+      <Gallery locale={locale} />
+
       <section id="appointment-form" className="py-24 bg-zinc-950/50">
         <div className="container mx-auto px-6 max-w-4xl">
-          <AppointmentForm t={t} />
+          <AppointmentForm t={t} services={content.services} />
         </div>
       </section>
 
       <CTA t={t} />
+
+      <LocationMap t={t} />
 
       <Footer t={t} locale={locale} />
     </main>

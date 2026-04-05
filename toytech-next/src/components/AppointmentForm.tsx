@@ -2,14 +2,15 @@
 
 import React, { useState } from "react";
 import { Calendar, CheckCircle2, Loader2, Phone, Send, User, Car } from "lucide-react";
-import servicesData from "../lib/services.json";
 import type { Translation } from "../lib/i18n";
+import type { ServiceDefinition } from "../lib/site-content";
 
 interface AppointmentFormProps {
   t: Translation;
+  services: ServiceDefinition[];
 }
 
-export default function AppointmentForm({ t }: AppointmentFormProps) {
+export default function AppointmentForm({ t, services }: AppointmentFormProps) {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -167,7 +168,7 @@ export default function AppointmentForm({ t }: AppointmentFormProps) {
             <option value="" disabled>
               {t.form.servicePlaceholder}
             </option>
-            {servicesData.map((service) => (
+            {services.map((service) => (
               <option
                 key={service.slug}
                 value={
