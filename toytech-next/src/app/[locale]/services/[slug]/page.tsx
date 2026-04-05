@@ -173,10 +173,10 @@ export default async function ServicePage({
     .filter(Boolean) as Array<{ slug: string; title: string; desc: string }>;
 
   return (
-    <main className="min-h-screen bg-zinc-950">
+    <main className="min-h-screen overflow-x-hidden bg-zinc-950">
       <Navbar locale={locale} t={t} />
 
-      <section className="pt-40 pb-24">
+      <section className="overflow-hidden pt-40 pb-24">
         <div className="mx-auto w-full max-w-[1380px] px-6">
           <Link
             href={`/${locale}#services`}
@@ -186,7 +186,7 @@ export default async function ServicePage({
             <span>{t.servicePage.back}</span>
           </Link>
 
-          <div className="grid items-start gap-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(420px,0.85fr)]">
+          <div className="grid items-start gap-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
             <div className="space-y-8 animate-in slide-in-from-left duration-500">
               <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-red-600/10 text-red-600">
                 <Icon className="h-10 w-10" />
@@ -230,9 +230,9 @@ export default async function ServicePage({
                 </div>
               </div>
 
-              <div className="space-y-5 text-xl font-medium leading-relaxed text-zinc-400">
+              <div className="space-y-5 text-xl font-medium leading-relaxed text-zinc-400 min-w-0">
                 {serviceParagraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                  <p key={paragraph} className="break-words">{paragraph}</p>
                 ))}
               </div>
 
