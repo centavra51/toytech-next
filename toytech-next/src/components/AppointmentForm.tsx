@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Calendar, CheckCircle2, Loader2, Phone, Send, User, Car } from "lucide-react";
+import { usePathname } from "next/navigation";
 import type { Translation } from "../lib/i18n";
 import type { ServiceDefinition } from "../lib/site-content";
 
@@ -14,6 +15,12 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [startedAt, setStartedAt] = useState<number>(Date.now());
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setStartedAt(Date.now());
+  }, [pathname]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -27,6 +34,9 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
       car: String(formData.get("car") || "").trim(),
       date: String(formData.get("date") || "").trim(),
       service: String(formData.get("service") || "").trim(),
+      website: String(formData.get("website") || "").trim(),
+      startedAt,
+      page: pathname,
     };
 
     try {
@@ -84,6 +94,15 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
       <div className="absolute right-0 top-0 -z-10 h-64 w-64 rounded-full bg-red-600/5 blur-[80px] transition-all duration-500 group-hover:bg-red-600/10" />
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+          aria-hidden="true"
+        />
+
         <div className="mb-8 space-y-2">
           <h3 className="text-3xl font-black tracking-tighter text-white">
             {t.form.title}
