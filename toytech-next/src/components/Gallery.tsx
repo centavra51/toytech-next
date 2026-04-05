@@ -57,7 +57,7 @@ const galleryContent = {
       },
       {
         key: "facebook",
-        image: "/images/process_diag.webp",
+        image: "/images/suspension.webp",
         title: "Facebook",
         desc: "Новости сервиса, кейсы клиентов и обновления по услугам.",
         action: "Открыть Facebook",
