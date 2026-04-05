@@ -43,7 +43,7 @@ const galleryContent = {
     socialCards: [
       {
         key: "instagram",
-        image: "/images/process_repair.webp",
+        image: "/images/gibrid_diagnosis.webp",
         title: "Instagram",
         desc: "Фото до и после, процессы ремонта и свежие проекты сервиса.",
         action: "Открыть Instagram",
@@ -93,7 +93,7 @@ const galleryContent = {
     socialCards: [
       {
         key: "instagram",
-        image: "/images/process_repair.webp",
+        image: "/images/gibrid_diagnosis.webp",
         title: "Instagram",
         desc: "Poze before/after, procese de reparatie si proiecte recente din service.",
         action: "Deschide Instagram",
@@ -143,7 +143,7 @@ const galleryContent = {
     socialCards: [
       {
         key: "instagram",
-        image: "/images/process_repair.webp",
+        image: "/images/gibrid_diagnosis.webp",
         title: "Instagram",
         desc: "Before-and-after photos, repair stories, and recent workshop projects.",
         action: "Open Instagram",
