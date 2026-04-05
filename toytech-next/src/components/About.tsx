@@ -62,8 +62,8 @@ export default function About({ t }: AboutProps) {
             </div>
 
             <div className="pt-4">
-               <a href={toTelHref(t.about.call_btn)} className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-2xl font-black text-lg transition-all shadow-xl shadow-red-600/20">
-                 {t.about.call_btn}
+               <a href={toTelHref(t.common.phone)} className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-2xl font-black text-lg transition-all shadow-xl shadow-red-600/20">
+                 {t.hero.cta_call}
                </a>
             </div>
           </div>

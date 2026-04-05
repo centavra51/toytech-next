@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -68,6 +70,7 @@ export default async function ServicePage({
   }
 
   const Icon = iconMap[svcInfo.icon as keyof typeof iconMap] || Cog;
+  const serviceImage = svcInfo.image?.trim();
 
   return (
     <main className="min-h-screen bg-zinc-950">
@@ -88,6 +91,33 @@ export default async function ServicePage({
               <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-red-600/10 text-red-600">
                 <Icon className="h-10 w-10" />
               </div>
+
+              {serviceImage && (
+                <div className="group relative overflow-hidden rounded-[2.5rem] border border-zinc-800 bg-zinc-900 shadow-2xl">
+                  <div className="relative aspect-[16/10]">
+                    {serviceImage.startsWith("/") ? (
+                      <Image
+                        src={serviceImage}
+                        alt={service.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                    ) : (
+                      <img
+                        src={serviceImage}
+                        alt={service.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
+                  </div>
+
+                  <div className="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/80 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-white backdrop-blur-sm">
+                    <Icon className="h-4 w-4 text-red-400" />
+                    {service.price}
+                  </div>
+                </div>
+              )}
 
               <div className="space-y-4">
                 <h1 className="text-4xl font-black text-white lg:text-6xl">

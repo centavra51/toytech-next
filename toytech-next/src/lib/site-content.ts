@@ -6,6 +6,7 @@ export type ServiceDefinition = {
   id: string;
   slug: string;
   icon: string;
+  image?: string;
 };
 
 export type SiteContent = {
@@ -23,13 +24,20 @@ export const defaultSiteContent: SiteContent = {
 };
 
 function normalizeSiteContent(data: Partial<SiteContent> | null | undefined): SiteContent {
+  const defaultServicesById = Object.fromEntries(
+    defaultSiteContent.services.map((service) => [service.id, service]),
+  ) as Record<string, ServiceDefinition>;
+
   return {
     translations: {
       ...defaultSiteContent.translations,
       ...(data?.translations ?? {}),
     } as Record<Locale, Translation>,
     services: Array.isArray(data?.services) && data.services.length > 0
-      ? (data.services as ServiceDefinition[])
+      ? (data.services as ServiceDefinition[]).map((service) => ({
+          ...defaultServicesById[service.id],
+          ...service,
+        }))
       : defaultSiteContent.services,
   };
 }

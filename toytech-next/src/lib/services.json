@@ -2,61 +2,73 @@
   {
     "id": "s1",
     "slug": "hybrid-systems",
-    "icon": "battery-charging"
+    "icon": "battery-charging",
+    "image": "/images/diagnostic.jpg"
   },
   {
     "id": "s2",
     "slug": "engine-mechanics",
-    "icon": "cog"
+    "icon": "cog",
+    "image": "/images/mechanic-engine.jpg"
   },
   {
     "id": "s3",
     "slug": "electronics-tuning",
-    "icon": "zap"
+    "icon": "zap",
+    "image": "/images/process_diag.png"
   },
   {
     "id": "s4",
     "slug": "exhaust-system",
-    "icon": "wind"
+    "icon": "wind",
+    "image": "/images/brake-repair.webp"
   },
   {
     "id": "s5",
     "slug": "body-work",
-    "icon": "brush"
+    "icon": "brush",
+    "image": "/images/brands_collage.png"
   },
   {
     "id": "s6",
     "slug": "motorcycles",
-    "icon": "bike"
+    "icon": "bike",
+    "image": "/images/master.png"
   },
   {
     "id": "s7",
     "slug": "pre-purchase-inspection",
-    "icon": "shield-check"
+    "icon": "shield-check",
+    "image": "/images/diagnostic.jpg"
   },
   {
     "id": "s8",
     "slug": "wheel-alignment",
-    "icon": "gauge"
+    "icon": "gauge",
+    "image": "/images/suspension.jpg"
   },
   {
     "id": "s9",
     "slug": "cooling-system",
-    "icon": "thermometer"
+    "icon": "thermometer",
+    "image": "/images/suspension-repair.jpg"
   },
   {
     "id": "s10",
     "slug": "transmission-gearbox",
-    "icon": "box"
+    "icon": "box",
+    "image": "/images/process_repair.png"
   },
   {
     "id": "s11",
     "slug": "oil-change-maintenance",
-    "icon": "droplets"
+    "icon": "droplets",
+    "image": "/images/oil-change.jpg"
   },
   {
     "id": "s12",
     "slug": "air-conditioning",
-    "icon": "air-vent"
+    "icon": "air-vent",
+    "image": "/images/brake-service.jpg"
   }
 ]

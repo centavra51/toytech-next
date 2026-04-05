@@ -67,7 +67,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
         isScrolled ? "bg-zinc-950/95 backdrop-blur-md" : "bg-zinc-950/88 backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto grid h-24 w-full max-w-[1380px] grid-cols-[auto_1fr_auto] items-center gap-8 px-6">
+      <div className="mx-auto flex h-20 w-full max-w-[1380px] items-center justify-between gap-4 px-4 sm:px-5 lg:grid lg:h-24 lg:grid-cols-[auto_1fr_auto] lg:gap-8 lg:px-6">
         <Link href={`/${locale}`} className={`${logoWrapClass} hidden lg:block`}>
           <Image
             src="/logo_monolith.svg"
@@ -152,38 +152,46 @@ export default function Navbar({ locale, t }: NavbarProps) {
           </a>
         </div>
 
-        <div className="flex items-center justify-between gap-4 lg:hidden">
-          <Link href={`/${locale}`} className="relative block h-20 w-72 overflow-hidden">
+        <div className="flex min-w-0 flex-1 items-center justify-between gap-3 lg:hidden">
+          <Link href={`/${locale}`} className="relative block h-16 w-52 flex-none overflow-hidden sm:h-[4.25rem] sm:w-60">
             <Image
               src="/logo_monolith.svg"
               alt="ToyTech"
               fill
-              className="origin-left translate-y-[4px] scale-[1.24] object-contain object-left"
+              className="origin-left translate-y-[4px] scale-[1.2] object-contain object-left sm:scale-[1.24]"
               priority
             />
           </Link>
 
-          <button className="p-2 text-white" onClick={() => setIsMenuOpen((prev) => !prev)}>
-            {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+          <button
+            className="mr-1 flex h-11 w-11 flex-none items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900 text-white transition-colors hover:border-red-600"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
 
       <div
-        className={`fixed inset-0 z-[60] flex flex-col items-center justify-center gap-8 bg-zinc-950 transition-transform duration-300 lg:hidden ${
+        className={`fixed inset-0 z-[60] flex flex-col items-center justify-center gap-8 bg-zinc-950 px-6 transition-transform duration-300 lg:hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <button className="absolute right-6 top-6 p-2 text-white" onClick={() => setIsMenuOpen(false)}>
-          <X className="h-8 w-8" />
+        <button
+          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900 text-white sm:right-5 sm:top-5"
+          onClick={() => setIsMenuOpen(false)}
+          aria-label="Close menu"
+        >
+          <X className="h-6 w-6" />
         </button>
 
-        <div className="relative mb-8 h-24 w-80 overflow-hidden">
+        <div className="relative mb-6 h-20 w-72 overflow-hidden">
           <Image
             src="/logo_monolith.svg"
             alt="ToyTech"
             fill
-            className="origin-left translate-y-[5px] scale-[1.32] object-contain object-left"
+            className="origin-left translate-y-[5px] scale-[1.28] object-contain object-left"
           />
         </div>
 
@@ -192,7 +200,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
             key={link.href}
             href={link.href}
             onClick={() => setIsMenuOpen(false)}
-            className="text-2xl font-bold transition-colors hover:text-red-600"
+            className="text-center text-2xl font-bold transition-colors hover:text-red-600"
           >
             {link.label}
           </a>
@@ -225,7 +233,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
         <a
           href="#appointment-form"
           onClick={() => setIsMenuOpen(false)}
-          className="mt-6 rounded-2xl bg-red-600 px-10 py-4 text-lg font-black text-white shadow-xl shadow-red-600/30"
+          className="mt-4 rounded-2xl bg-red-600 px-10 py-4 text-lg font-black text-white shadow-xl shadow-red-600/30"
         >
           {t.nav.book}
         </a>

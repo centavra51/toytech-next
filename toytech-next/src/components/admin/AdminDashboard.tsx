@@ -332,6 +332,7 @@ export function AdminDashboard({
           id: serviceId,
           slug: `new-service-${nextNumber}`,
           icon: "cog",
+          image: "",
         },
       ],
       translations: Object.fromEntries(
@@ -720,6 +721,13 @@ export function AdminDashboard({
                       value={service.icon}
                       onChange={(value) =>
                         handleServiceDefinitionChange(index, "icon", value)
+                      }
+                    />
+                    <Field
+                      label="Image path or URL"
+                      value={service.image ?? ""}
+                      onChange={(value) =>
+                        handleServiceDefinitionChange(index, "image", value)
                       }
                     />
                     <Field
