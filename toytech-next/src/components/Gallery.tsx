@@ -174,7 +174,7 @@ const socialIconMap = {
 
 export default function Gallery({ locale, socialLinks }: GalleryProps) {
   const content = galleryContent[locale as keyof typeof galleryContent] ?? galleryContent.ro;
-  const [showSocials, setShowSocials] = useState(false);
+  const [showSocials, setShowSocials] = useState(true);
 
   return (
     <section id="gallery" className="bg-zinc-950 py-24">
