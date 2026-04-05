@@ -42,7 +42,7 @@ export default function Footer({ t, locale }: FooterProps) {
           <div className="space-y-8">
             <Link href={`/${locale}`} className="relative block h-24 w-80 overflow-hidden">
               <Image
-                src="/logo_monolith.svg"
+                src="/logo_monolith.png"
                 alt="ToyTech"
                 fill
                 className="origin-left translate-y-[5px] scale-[1.32] object-contain object-left"

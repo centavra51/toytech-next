@@ -82,7 +82,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
       <div className="mx-auto flex h-20 w-full max-w-[1380px] items-center justify-between gap-4 px-4 sm:px-5 lg:grid lg:h-24 lg:grid-cols-[auto_1fr_auto] lg:gap-8 lg:px-6">
         <Link href={`/${locale}`} className={`${logoWrapClass} hidden lg:block`}>
           <Image
-            src="/logo_monolith.svg"
+            src="/logo_monolith.png"
             alt="ToyTech"
             fill
             className={logoImageClass}
@@ -157,7 +157,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
         <div className="flex min-w-0 flex-1 items-center justify-between gap-3 lg:hidden">
           <Link href={`/${locale}`} className="relative block h-16 w-52 flex-none overflow-hidden sm:h-[4.25rem] sm:w-60">
             <Image
-              src="/logo_monolith.svg"
+              src="/logo_monolith.png"
               alt="ToyTech"
               fill
               className="origin-left translate-y-[4px] scale-[1.2] object-contain object-left sm:scale-[1.24]"
@@ -190,7 +190,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
 
         <div className="relative mb-6 h-20 w-72 overflow-hidden">
           <Image
-            src="/logo_monolith.svg"
+            src="/logo_monolith.png"
             alt="ToyTech"
             fill
             className="origin-left translate-y-[5px] scale-[1.28] object-contain object-left"
