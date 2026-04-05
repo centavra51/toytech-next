@@ -4,9 +4,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock, Facebook, Instagram, Mail, MapPin, Smartphone } from "lucide-react";
+import type { Translation } from "../lib/i18n";
 
 interface FooterProps {
-  t: any;
+  t: Translation;
   locale: string;
 }
 

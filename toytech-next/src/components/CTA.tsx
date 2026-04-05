@@ -2,9 +2,10 @@
 
 import React from "react";
 import { CalendarCheck, Phone } from "lucide-react";
+import type { Translation } from "../lib/i18n";
 
 interface CTAProps {
-  t: any;
+  t: Translation;
 }
 
 export default function CTA({ t }: CTAProps) {

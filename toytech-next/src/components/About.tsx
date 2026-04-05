@@ -3,9 +3,10 @@
 import React from 'react';
 import Image from 'next/image';
 import { CheckCircle2, Award, Zap, ShieldCheck, Heart, Wrench } from 'lucide-react';
+import type { Translation } from "../lib/i18n";
 
 interface AboutProps {
-  t: any;
+  t: Translation;
 }
 
 export default function About({ t }: AboutProps) {

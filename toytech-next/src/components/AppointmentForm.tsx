@@ -3,9 +3,10 @@
 import React, { useState } from "react";
 import { Calendar, CheckCircle2, Loader2, Phone, Send, User, Car } from "lucide-react";
 import servicesData from "../lib/services.json";
+import type { Translation } from "../lib/i18n";
 
 interface AppointmentFormProps {
-  t: any;
+  t: Translation;
 }
 
 export default function AppointmentForm({ t }: AppointmentFormProps) {

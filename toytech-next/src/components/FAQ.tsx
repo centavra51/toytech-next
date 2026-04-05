@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, CircleHelp } from 'lucide-react';
+import type { Translation } from "../lib/i18n";
 
 interface FAQProps {
-  t: any;
+  t: Translation;
 }
 
 export default function FAQ({ t }: FAQProps) {

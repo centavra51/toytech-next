@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
+import type { Translation } from "../lib/i18n";
 
 interface ReviewsProps {
-  t: any;
+  t: Translation;
 }
 
 export default function Reviews({ t }: ReviewsProps) {

@@ -5,10 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
+import type { Translation } from "../lib/i18n";
 
 interface NavbarProps {
   locale: string;
-  t: any;
+  t: Translation;
 }
 
 export default function Navbar({ locale, t }: NavbarProps) {
@@ -85,10 +86,12 @@ export default function Navbar({ locale, t }: NavbarProps) {
               onClick={() => setIsLangOpen((prev) => !prev)}
               className="flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm font-semibold transition-all hover:border-red-600"
             >
-              <img
+              <Image
                 src={localeOptions[locale as keyof typeof localeOptions]?.flag}
-                className="h-3.5 w-5 rounded-sm object-cover"
+                className="rounded-sm object-cover"
                 alt={locale}
+                width={20}
+                height={14}
               />
               <span className="uppercase">{locale}</span>
               <ChevronDown
@@ -111,10 +114,12 @@ export default function Navbar({ locale, t }: NavbarProps) {
                           : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
                       }`}
                     >
-                      <img
+                      <Image
                         src={localeOptions[key].flag}
-                        className="h-3.5 w-5 rounded-sm object-cover"
+                        className="rounded-sm object-cover"
                         alt={key}
+                        width={20}
+                        height={14}
                       />
                       {localeOptions[key].name}
                     </button>
@@ -160,7 +165,12 @@ export default function Navbar({ locale, t }: NavbarProps) {
         </button>
 
         <div className="relative mb-8 h-16 w-56">
-          <Image src="/logo_monolith.svg" alt="ToyTech" fill className="object-contain" />
+          <Image
+            src="/logo_monolith.svg"
+            alt="ToyTech"
+            fill
+            className="object-contain"
+          />
         </div>
 
         {navLinks.map((link) => (

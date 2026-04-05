@@ -3,9 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import { BatteryCharging, Phone } from "lucide-react";
+import type { Translation } from "../lib/i18n";
 
 interface HeroProps {
-  t: any;
+  t: Translation;
 }
 
 export default function Hero({ t }: HeroProps) {
