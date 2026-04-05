@@ -3,7 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import { BatteryCharging, Phone } from "lucide-react";
+import MessengerButtons from "./MessengerButtons";
 import type { Translation } from "../lib/i18n";
+import { toTelHref } from "../lib/contact-links";
 
 interface HeroProps {
   t: Translation;
@@ -41,12 +43,19 @@ export default function Hero({ t }: HeroProps) {
               </a>
 
               <a
-                href={`tel:${t.common.phone}`}
+                href={toTelHref(t.common.phone)}
                 className="flex items-center gap-3 rounded-2xl border border-zinc-800 bg-zinc-900 px-8 py-4 text-lg font-bold text-white transition-all hover:border-zinc-700"
               >
                 <Phone className="h-5 w-5 text-red-600" />
                 {t.hero.cta_call}
               </a>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="text-xs font-black uppercase tracking-[0.24em] text-zinc-500">
+                Messengers
+              </div>
+              <MessengerButtons phone={t.common.phone} />
             </div>
 
             <div className="grid grid-cols-3 gap-8 border-t border-zinc-900 pt-10">

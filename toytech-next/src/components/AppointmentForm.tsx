@@ -5,6 +5,8 @@ import { Calendar, CheckCircle2, Loader2, Phone, Send, User, Car } from "lucide-
 import { usePathname } from "next/navigation";
 import type { Translation } from "../lib/i18n";
 import type { ServiceDefinition } from "../lib/site-content";
+import MessengerButtons from "./MessengerButtons";
+import { toTelHref } from "../lib/contact-links";
 
 interface AppointmentFormProps {
   t: Translation;
@@ -108,6 +110,16 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
             {t.form.title}
           </h3>
           <p className="font-medium text-zinc-500">{t.form.subtitle}</p>
+          <div className="flex flex-wrap items-center gap-4 pt-3">
+            <a
+              href={toTelHref(t.common.phone)}
+              className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2 text-sm font-bold text-zinc-200 transition-colors hover:border-red-600 hover:text-white"
+            >
+              <Phone className="h-4 w-4 text-red-500" />
+              {t.common.phone}
+            </a>
+            <MessengerButtons phone={t.common.phone} compact />
+          </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">

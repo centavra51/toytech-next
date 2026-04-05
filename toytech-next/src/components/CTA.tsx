@@ -3,6 +3,7 @@
 import React from "react";
 import { CalendarCheck, Phone } from "lucide-react";
 import type { Translation } from "../lib/i18n";
+import { toTelHref } from "../lib/contact-links";
 
 interface CTAProps {
   t: Translation;
@@ -26,7 +27,7 @@ export default function CTA({ t }: CTAProps) {
 
           <div className="flex flex-wrap items-center justify-center gap-6">
             <a
-              href={`tel:${t.common.phone}`}
+              href={toTelHref(t.common.phone)}
               className="group relative flex items-center gap-4 rounded-2xl border border-zinc-700 bg-zinc-800 px-10 py-5 text-xl font-black shadow-xl transition-all hover:border-red-600"
             >
               <Phone className="h-6 w-6 text-red-600 transition-transform group-hover:scale-110" />

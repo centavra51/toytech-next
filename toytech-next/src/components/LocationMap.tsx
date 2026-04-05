@@ -3,6 +3,7 @@
 import React from "react";
 import { Clock3, MapPin, Phone } from "lucide-react";
 import type { Translation } from "../lib/i18n";
+import { toTelHref } from "../lib/contact-links";
 
 export default function LocationMap({ t }: { t: Translation }) {
   return (
@@ -38,7 +39,7 @@ export default function LocationMap({ t }: { t: Translation }) {
                 <div className="text-sm font-black uppercase tracking-[0.2em] text-zinc-500">
                   Phone
                 </div>
-                <a href={`tel:${t.common.phone}`} className="mt-2 block font-medium text-zinc-200">
+                <a href={toTelHref(t.common.phone)} className="mt-2 block font-medium text-zinc-200">
                   {t.common.phone}
                 </a>
               </div>

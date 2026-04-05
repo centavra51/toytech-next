@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { CheckCircle2, Award, Zap, ShieldCheck, Heart, Wrench } from 'lucide-react';
 import type { Translation } from "../lib/i18n";
+import { toTelHref } from "../lib/contact-links";
 
 interface AboutProps {
   t: Translation;
@@ -26,7 +27,7 @@ export default function About({ t }: AboutProps) {
           {/* Image side */}
           <div className="relative">
             <div className="relative aspect-square rounded-[3rem] overflow-hidden border border-zinc-800">
-              <Image src="/images/mechanic-portrait.jpg" alt="ToyTech Team" fill className="object-cover" />
+              <Image src="/images/master.png" alt="ToyTech Team" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent" />
             </div>
             
@@ -61,7 +62,7 @@ export default function About({ t }: AboutProps) {
             </div>
 
             <div className="pt-4">
-               <a href={`tel:${t.about.call_btn}`} className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-2xl font-black text-lg transition-all shadow-xl shadow-red-600/20">
+               <a href={toTelHref(t.about.call_btn)} className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-2xl font-black text-lg transition-all shadow-xl shadow-red-600/20">
                  {t.about.call_btn}
                </a>
             </div>

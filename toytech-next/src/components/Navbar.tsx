@@ -6,11 +6,16 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import type { Translation } from "../lib/i18n";
+import { toTelHref } from "../lib/contact-links";
 
 interface NavbarProps {
   locale: string;
   t: Translation;
 }
+
+const logoWrapClass = "relative block h-24 w-80 overflow-hidden";
+const logoImageClass =
+  "origin-left translate-y-[5px] scale-[1.32] object-contain object-left";
 
 export default function Navbar({ locale, t }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,43 +63,38 @@ export default function Navbar({ locale, t }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "h-[5.5rem] border-b border-zinc-800 bg-zinc-950/95 backdrop-blur-md"
-          : "h-24 bg-transparent"
+      className={`fixed left-0 right-0 top-0 z-50 border-b border-zinc-900/80 transition-all duration-300 ${
+        isScrolled ? "bg-zinc-950/95 backdrop-blur-md" : "bg-zinc-950/88 backdrop-blur-sm"
       }`}
     >
-      <div className="container mx-auto flex h-full items-center justify-between px-6">
-        <Link
-          href={`/${locale}`}
-          className="relative flex h-16 w-80 items-center overflow-hidden lg:h-[4.5rem] lg:w-[25rem]"
-        >
+      <div className="mx-auto grid h-24 w-full max-w-[1380px] grid-cols-[auto_1fr_auto] items-center gap-8 px-6">
+        <Link href={`/${locale}`} className={`${logoWrapClass} hidden lg:block`}>
           <Image
             src="/logo_monolith.svg"
             alt="ToyTech"
             fill
-            className="origin-left translate-y-[3px] scale-[1.28] object-contain object-left lg:translate-y-[4px] lg:scale-[1.42]"
+            className={logoImageClass}
             priority
           />
         </Link>
 
-        <div className="hidden items-center gap-10 lg:flex">
+        <div className="hidden min-w-0 items-center justify-center gap-8 lg:flex xl:gap-10">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium uppercase tracking-wide text-zinc-400 transition-colors hover:text-white"
+              className="whitespace-nowrap text-sm font-semibold uppercase tracking-[0.08em] text-zinc-300 transition-colors hover:text-white"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        <div className="hidden items-center gap-6 lg:flex">
-          <div className="relative">
+        <div className="hidden items-center justify-end gap-4 lg:flex xl:gap-5">
+          <div className="relative shrink-0">
             <button
               onClick={() => setIsLangOpen((prev) => !prev)}
-              className="flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm font-semibold transition-all hover:border-red-600"
+              className="flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition-all hover:border-red-600"
             >
               <Image
                 src={localeOptions[locale as keyof typeof localeOptions]?.flag}
@@ -105,9 +105,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
               />
               <span className="uppercase">{locale}</span>
               <ChevronDown
-                className={`h-4 w-4 transition-transform ${
-                  isLangOpen ? "rotate-180" : ""
-                }`}
+                className={`h-4 w-4 transition-transform ${isLangOpen ? "rotate-180" : ""}`}
               />
             </button>
 
@@ -140,26 +138,35 @@ export default function Navbar({ locale, t }: NavbarProps) {
           </div>
 
           <a
-            href={`tel:${t.common.phone}`}
-            className="font-bold text-white transition-colors hover:text-red-500"
+            href={toTelHref(t.common.phone)}
+            className="shrink-0 whitespace-nowrap text-xl font-black text-white transition-colors hover:text-red-500"
           >
             {t.common.phone}
           </a>
 
           <a
             href="#appointment-form"
-            className="transform rounded-xl bg-red-600 px-6 py-2.5 font-bold text-white shadow-lg shadow-red-600/20 transition-all hover:-translate-y-0.5 hover:bg-red-700"
+            className="shrink-0 rounded-2xl bg-red-600 px-8 py-3 font-black text-white shadow-lg shadow-red-600/20 transition-all hover:-translate-y-0.5 hover:bg-red-700"
           >
             {t.nav.book}
           </a>
         </div>
 
-        <button
-          className="p-2 text-white lg:hidden"
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-        >
-          {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
-        </button>
+        <div className="flex items-center justify-between gap-4 lg:hidden">
+          <Link href={`/${locale}`} className="relative block h-20 w-72 overflow-hidden">
+            <Image
+              src="/logo_monolith.svg"
+              alt="ToyTech"
+              fill
+              className="origin-left translate-y-[4px] scale-[1.24] object-contain object-left"
+              priority
+            />
+          </Link>
+
+          <button className="p-2 text-white" onClick={() => setIsMenuOpen((prev) => !prev)}>
+            {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+          </button>
+        </div>
       </div>
 
       <div
@@ -167,19 +174,16 @@ export default function Navbar({ locale, t }: NavbarProps) {
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <button
-          className="absolute right-6 top-6 p-2 text-white"
-          onClick={() => setIsMenuOpen(false)}
-        >
+        <button className="absolute right-6 top-6 p-2 text-white" onClick={() => setIsMenuOpen(false)}>
           <X className="h-8 w-8" />
         </button>
 
-        <div className="relative mb-8 h-24 w-[21rem] overflow-hidden">
+        <div className="relative mb-8 h-24 w-80 overflow-hidden">
           <Image
             src="/logo_monolith.svg"
             alt="ToyTech"
             fill
-            className="origin-center translate-y-[4px] scale-[1.3] object-contain"
+            className="origin-left translate-y-[5px] scale-[1.32] object-contain object-left"
           />
         </div>
 
@@ -194,28 +198,34 @@ export default function Navbar({ locale, t }: NavbarProps) {
           </a>
         ))}
 
-        <div className="mt-4 flex gap-4">
-          {(Object.keys(localeOptions) as Array<keyof typeof localeOptions>).map(
-            (key) => (
-              <button
-                key={key}
-                onClick={() => changeLanguage(key)}
-                className={`rounded-full border px-5 py-2.5 font-bold transition-all ${
-                  locale === key
-                    ? "border-red-600 bg-red-600/5 text-red-600"
-                    : "border-zinc-800 text-zinc-400"
-                }`}
-              >
-                {key.toUpperCase()}
-              </button>
-            ),
-          )}
+        <a
+          href={toTelHref(t.common.phone)}
+          className="text-xl font-black text-white"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          {t.common.phone}
+        </a>
+
+        <div className="mt-2 flex gap-4">
+          {(Object.keys(localeOptions) as Array<keyof typeof localeOptions>).map((key) => (
+            <button
+              key={key}
+              onClick={() => changeLanguage(key)}
+              className={`rounded-full border px-5 py-2.5 font-bold transition-all ${
+                locale === key
+                  ? "border-red-600 bg-red-600/5 text-red-600"
+                  : "border-zinc-800 text-zinc-400"
+              }`}
+            >
+              {key.toUpperCase()}
+            </button>
+          ))}
         </div>
 
         <a
           href="#appointment-form"
           onClick={() => setIsMenuOpen(false)}
-          className="mt-8 rounded-2xl bg-red-600 px-10 py-4 text-lg font-black text-white shadow-xl shadow-red-600/30"
+          className="mt-6 rounded-2xl bg-red-600 px-10 py-4 text-lg font-black text-white shadow-xl shadow-red-600/30"
         >
           {t.nav.book}
         </a>

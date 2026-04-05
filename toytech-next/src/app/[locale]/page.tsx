@@ -57,7 +57,7 @@ export default async function Home({ params }: Props) {
       <Gallery locale={locale} />
 
       <section id="appointment-form" className="py-24 bg-zinc-950/50">
-        <div className="container mx-auto px-6 max-w-4xl">
+        <div className="mx-auto w-full max-w-[1380px] px-6">
           <AppointmentForm t={t} services={content.services} />
         </div>
       </section>
