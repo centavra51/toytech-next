@@ -3,72 +3,72 @@
     "id": "s1",
     "slug": "hybrid-systems",
     "icon": "battery-charging",
-    "image": "/images/diagnostic.jpg"
+    "image": "/images/диагностика гибридов.png"
   },
   {
     "id": "s2",
     "slug": "engine-mechanics",
     "icon": "cog",
-    "image": "/images/mechanic-engine.jpg"
+    "image": "/images/Motor si mecanica.png"
   },
   {
     "id": "s3",
     "slug": "electronics-tuning",
     "icon": "zap",
-    "image": "/images/process_diag.png"
+    "image": "/images/hero image.jpg"
   },
   {
     "id": "s4",
     "slug": "exhaust-system",
     "icon": "wind",
-    "image": "/images/brake-repair.webp"
+    "image": "/images/Sistem evacuare.png"
   },
   {
     "id": "s5",
     "slug": "body-work",
     "icon": "brush",
-    "image": "/images/brands_collage.png"
+    "image": "/images/mechanic-portrait.jpg"
   },
   {
     "id": "s6",
     "slug": "motorcycles",
     "icon": "bike",
-    "image": "/images/master.png"
+    "image": "/images/Motociclete.png"
   },
   {
     "id": "s7",
     "slug": "pre-purchase-inspection",
     "icon": "shield-check",
-    "image": "/images/diagnostic.jpg"
+    "image": "/images/Inspectie inainte de cumparare.png"
   },
   {
     "id": "s8",
     "slug": "wheel-alignment",
     "icon": "gauge",
-    "image": "/images/suspension.jpg"
+    "image": "/images/Geometrie roti.png"
   },
   {
     "id": "s9",
     "slug": "cooling-system",
     "icon": "thermometer",
-    "image": "/images/suspension-repair.jpg"
+    "image": "/images/f8191cd9-cf2a-4f89-8443-6c31df0dcf5c.jpg"
   },
   {
     "id": "s10",
     "slug": "transmission-gearbox",
     "icon": "box",
-    "image": "/images/process_repair.png"
+    "image": "/images/Cutie de viteze.png"
   },
   {
     "id": "s11",
     "slug": "oil-change-maintenance",
     "icon": "droplets",
-    "image": "/images/oil-change.jpg"
+    "image": "/images/Schimb ulei si mentenanta.png"
   },
   {
     "id": "s12",
     "slug": "air-conditioning",
     "icon": "air-vent",
-    "image": "/images/brake-service.jpg"
+    "image": "/images/Aer conditionat.png"
   }
 ]

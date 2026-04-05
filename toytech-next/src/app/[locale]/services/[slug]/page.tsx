@@ -151,6 +151,7 @@ export default async function ServicePage({
   const Icon = iconMap[svcInfo.icon as keyof typeof iconMap] || Cog;
   const serviceImage = svcInfo.image?.trim();
   const serviceParagraphs = getTextParagraphs(service.long_desc || service.desc);
+  const serviceImageAlt = service.seoTitle ?? service.title;
   const relatedLabel = getRelatedLabel(locale);
   const relatedItems = (relatedServices[svcInfo.id as keyof typeof relatedServices] ?? [])
     .map((relatedId) => {
@@ -197,14 +198,14 @@ export default async function ServicePage({
                     {serviceImage.startsWith("/") ? (
                       <Image
                         src={serviceImage}
-                        alt={service.title}
+                        alt={serviceImageAlt}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
                     ) : (
                       <img
                         src={serviceImage}
-                        alt={service.title}
+                        alt={serviceImageAlt}
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
                     )}
