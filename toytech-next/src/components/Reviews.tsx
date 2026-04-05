@@ -9,10 +9,13 @@ interface ReviewsProps {
 }
 
 export default function Reviews({ t }: ReviewsProps) {
-  const reviews = [
-    { ...t.reviews.r1, rating: 5 },
-    { ...t.reviews.r2, rating: 5 },
-  ];
+  const reviews = Object.entries(t.reviews)
+    .filter(([key, value]) => /^r\d+$/.test(key) && typeof value === "object" && value !== null)
+    .sort(([left], [right]) => Number(left.slice(1)) - Number(right.slice(1)))
+    .map(([, value]) => ({
+      ...(value as { text: string; author: string; car: string }),
+      rating: 5,
+    }));
 
   return (
     <section id="reviews" className="py-24 bg-zinc-950 overflow-hidden">
@@ -45,7 +48,7 @@ export default function Reviews({ t }: ReviewsProps) {
 
                 <div className="flex items-center gap-4 pt-4 border-t border-zinc-800">
                   <div className="w-12 h-12 bg-zinc-800 rounded-full flex items-center justify-center font-bold text-red-600 text-xl uppercase">
-                     {r.author[0]}
+                     {r.author?.[0] ?? "T"}
                   </div>
                   <div>
                     <div className="font-black text-white">{r.author}</div>

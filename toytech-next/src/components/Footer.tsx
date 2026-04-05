@@ -25,7 +25,7 @@ export default function Footer({ t, locale }: FooterProps) {
       <div className="container mx-auto px-6">
         <div className="mb-16 grid gap-12 px-6 lg:grid-cols-4">
           <div className="col-span-2 space-y-8 lg:col-span-1">
-            <Link href={`/${locale}`} className="relative block h-12 w-48">
+            <Link href={`/${locale}`} className="relative block h-16 w-64">
               <Image src="/logo_monolith.svg" alt="ToyTech" fill className="object-contain" />
             </Link>
             <p className="max-w-xs font-medium leading-relaxed text-zinc-500">

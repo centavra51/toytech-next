@@ -11,11 +11,16 @@ interface FAQProps {
 export default function FAQ({ t }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const faqItems = [
-    { q: t.faq.q1, a: t.faq.a1 },
-    { q: t.faq.q2, a: t.faq.a2 },
-    { q: t.faq.q3, a: t.faq.a3 },
-  ];
+  const faqItems = Object.keys(t.faq)
+    .filter((key) => /^q\d+$/.test(key))
+    .sort((left, right) => Number(left.slice(1)) - Number(right.slice(1)))
+    .map((questionKey) => {
+      const index = questionKey.slice(1);
+      return {
+        q: t.faq[questionKey as keyof typeof t.faq] as string,
+        a: t.faq[`a${index}` as keyof typeof t.faq] as string,
+      };
+    });
 
   return (
     <section id="faq" className="py-24 bg-zinc-900/50">

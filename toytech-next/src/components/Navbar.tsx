@@ -53,12 +53,12 @@ export default function Navbar({ locale, t }: NavbarProps) {
     <nav
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "h-20 border-b border-zinc-800 bg-zinc-950/95 backdrop-blur-md"
-          : "h-24 bg-transparent"
+          ? "h-24 border-b border-zinc-800 bg-zinc-950/95 backdrop-blur-md"
+          : "h-28 bg-transparent"
       }`}
     >
       <div className="container mx-auto flex h-full items-center justify-between px-6">
-        <Link href={`/${locale}`} className="relative h-12 w-40">
+        <Link href={`/${locale}`} className="relative h-16 w-56 lg:h-20 lg:w-72">
           <Image
             src="/logo_monolith.svg"
             alt="ToyTech"
@@ -164,7 +164,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
           <X className="h-8 w-8" />
         </button>
 
-        <div className="relative mb-8 h-16 w-56">
+        <div className="relative mb-8 h-20 w-72">
           <Image
             src="/logo_monolith.svg"
             alt="ToyTech"
