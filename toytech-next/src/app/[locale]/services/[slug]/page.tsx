@@ -176,8 +176,8 @@ export default async function ServicePage({
     <main className="min-h-screen overflow-x-hidden bg-zinc-950">
       <Navbar locale={locale} t={t} />
 
-      <section className="overflow-hidden pt-40 pb-24">
-        <div className="mx-auto w-full max-w-[1380px] px-6">
+      <section className="w-full overflow-hidden pt-40 pb-24">
+        <div className="mx-auto w-full max-w-[1380px] px-4 sm:px-6">
           <Link
             href={`/${locale}#services`}
             className="group mb-12 inline-flex items-center gap-2 font-bold text-zinc-500 transition-colors hover:text-red-500"
@@ -186,8 +186,8 @@ export default async function ServicePage({
             <span>{t.servicePage.back}</span>
           </Link>
 
-          <div className="grid items-start gap-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-            <div className="space-y-8 animate-in slide-in-from-left duration-500">
+          <div className="grid w-full items-start gap-8 md:gap-16 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+            <div className="w-full space-y-8 animate-in slide-in-from-left duration-500 min-w-0">
               <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-red-600/10 text-red-600">
                 <Icon className="h-10 w-10" />
               </div>
@@ -221,8 +221,8 @@ export default async function ServicePage({
                 </div>
               )}
 
-              <div className="space-y-4">
-                <h1 className="text-4xl font-black text-white lg:text-6xl">
+              <div className="w-full space-y-4 min-w-0">
+                <h1 className="w-full break-words text-2xl sm:text-4xl md:text-6xl font-black text-white">
                   {service.seoTitle ?? service.title}
                 </h1>
                 <div className="inline-block rounded-full bg-red-600/10 px-4 py-1.5 text-sm font-black uppercase tracking-widest text-red-600">
@@ -264,7 +264,7 @@ export default async function ServicePage({
                 </div>
               )}
 
-              <div className="space-y-6 pt-6">
+              <div className="w-full space-y-6 pt-6 min-w-0 md:pt-0">
                 <h2 className="text-2xl font-black text-white">
                   {t.servicePage.why}
                 </h2>
