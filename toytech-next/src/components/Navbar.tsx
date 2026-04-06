@@ -74,6 +74,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
   };
 
   return (
+    <>
     <nav
       className={`fixed left-0 right-0 top-0 z-50 border-b border-zinc-900/80 transition-all duration-300 ${
         isScrolled ? "bg-zinc-950/95 backdrop-blur-md" : "bg-zinc-950/90 backdrop-blur-sm"
@@ -179,13 +180,15 @@ export default function Navbar({ locale, t }: NavbarProps) {
         </div>
       </div>
 
+    </nav>
+
       <div
-        className={`fixed left-0 right-0 bottom-0 z-[60] flex flex-col items-center justify-center gap-8 px-6 transition-all duration-300 overflow-hidden lg:hidden ${
+        className={`fixed left-0 right-0 bottom-0 z-[60] flex flex-col items-center justify-center gap-8 px-6 overflow-y-auto lg:hidden transition-[top,visibility] duration-300 ${
           isMenuOpen ? "visible" : "invisible"
         }`}
         style={{
-          backgroundColor: "#000000",
           top: isMenuOpen ? "80px" : "100%",
+          backgroundColor: "#09090b",
         }}
       >
         <div className="relative mb-6 h-20 w-72 overflow-hidden">
@@ -237,11 +240,11 @@ export default function Navbar({ locale, t }: NavbarProps) {
         <a
           href={resolveNavHref("#appointment-form")}
           onClick={() => setIsMenuOpen(false)}
-          className="mt-4 rounded-2xl bg-red-600 px-10 py-4 text-lg font-black text-white shadow-xl shadow-red-600/30"
+          className="mt-4 mb-8 rounded-2xl bg-red-600 px-10 py-4 text-lg font-black text-white shadow-xl shadow-red-600/30"
         >
           {t.nav.book}
         </a>
       </div>
-    </nav>
+    </>
   );
 }
