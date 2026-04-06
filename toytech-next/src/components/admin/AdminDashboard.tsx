@@ -394,6 +394,10 @@ export function AdminDashboard({
         }),
       ) as SiteContent["translations"],
     }));
+
+    setTimeout(() => {
+      scrollToSection("services-list-bottom");
+    }, 100);
   };
 
   const removeService = (serviceId: string) => {
@@ -930,6 +934,7 @@ export function AdminDashboard({
                     </div>
                   );
                 })}
+                <div id="services-list-bottom" className="h-4" />
               </div>
             )}
           </section>
