@@ -119,13 +119,6 @@ export default function AppointmentForm({ t, services }: AppointmentFormProps) {
               <Phone className="h-4 w-4 text-red-500" />
               {t.common.phone}
             </a>
-            <a
-              href={toTelHref(t.common.phoneAdmin)}
-              className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2 text-sm font-bold text-zinc-400 transition-colors hover:border-red-600 hover:text-white"
-            >
-              <Phone className="h-4 w-4 text-zinc-500" />
-              {t.common.phoneAdmin}
-            </a>
             <MessengerButtons phone={t.common.phone} compact />
           </div>
         </div>

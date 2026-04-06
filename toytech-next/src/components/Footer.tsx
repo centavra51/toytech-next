@@ -153,22 +153,14 @@ export default function Footer({ t, locale }: FooterProps) {
                 <MapPin className="h-6 w-6 flex-shrink-0 text-red-600" />
                 <span className="font-medium leading-snug text-zinc-400">{t.common.address}</span>
               </li>
-              <li className="flex items-start gap-4">
-                <Smartphone className="mt-1 h-6 w-6 flex-shrink-0 text-red-600" />
-                <div className="flex flex-col gap-1">
-                  <a
-                    href={toTelHref(t.common.phone)}
-                    className="text-lg font-black text-zinc-400 hover:text-white"
-                  >
-                    {t.common.phone}
-                  </a>
-                  <a
-                    href={toTelHref(t.common.phoneAdmin)}
-                    className="text-sm font-semibold text-zinc-500 hover:text-white"
-                  >
-                    {t.common.phoneAdmin}
-                  </a>
-                </div>
+              <li className="flex items-center gap-4">
+                <Smartphone className="h-6 w-6 text-red-600" />
+                <a
+                  href={toTelHref(t.common.phone)}
+                  className="text-lg font-black text-zinc-400 hover:text-white"
+                >
+                  {t.common.phone}
+                </a>
               </li>
               <li className="flex gap-4">
                 <Clock className="h-6 w-6 flex-shrink-0 text-red-600" />

@@ -142,20 +142,12 @@ export default function Navbar({ locale, t }: NavbarProps) {
             )}
           </div>
 
-          <div className="flex shrink-0 flex-col items-end gap-0.5">
-            <a
-              href={toTelHref(t.common.phone)}
-              className="whitespace-nowrap text-lg font-black text-white transition-colors hover:text-red-500"
-            >
-              {t.common.phone}
-            </a>
-            <a
-              href={toTelHref(t.common.phoneAdmin)}
-              className="whitespace-nowrap text-sm font-semibold text-zinc-400 transition-colors hover:text-red-500"
-            >
-              {t.common.phoneAdmin}
-            </a>
-          </div>
+          <a
+            href={toTelHref(t.common.phone)}
+            className="shrink-0 whitespace-nowrap text-xl font-black text-white transition-colors hover:text-red-500"
+          >
+            {t.common.phone}
+          </a>
 
           <a
             href={resolveNavHref("#appointment-form")}
@@ -216,13 +208,6 @@ export default function Navbar({ locale, t }: NavbarProps) {
           onClick={() => setIsMenuOpen(false)}
         >
           {t.common.phone}
-        </a>
-        <a
-          href={toTelHref(t.common.phoneAdmin)}
-          className="text-base font-semibold text-zinc-400"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          {t.common.phoneAdmin}
         </a>
 
         <div className="mt-2 flex gap-4">
