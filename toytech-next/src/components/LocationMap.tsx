@@ -42,6 +42,9 @@ export default function LocationMap({ t }: { t: Translation }) {
                 <a href={toTelHref(t.common.phone)} className="mt-2 block font-medium text-zinc-200">
                   {t.common.phone}
                 </a>
+                <a href="tel:+37368187882" className="mt-1 block text-sm font-medium text-zinc-400 hover:text-white">
+                  +37368187882
+                </a>
               </div>
             </div>
 
