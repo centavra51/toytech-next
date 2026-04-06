@@ -17,6 +17,7 @@ import type { Locale, Translation } from "../../lib/i18n";
 import { locales } from "../../lib/i18n";
 import type { ServiceDefinition, SiteContent } from "../../lib/site-content";
 import { LogoutButton } from "./LogoutButton";
+import { ImageUpload } from "./ImageUpload";
 
 type TextFieldConfig = {
   path: string;
@@ -351,6 +352,7 @@ export function AdminDashboard({
           slug: `new-service-${nextNumber}`,
           icon: "cog",
           image: "",
+          imageAlt: "",
         },
       ],
       translations: Object.fromEntries(
@@ -784,6 +786,22 @@ export function AdminDashboard({
                           Delete
                         </button>
                       </div>
+
+                      <ImageUpload
+                        label="Service image"
+                        value={service.image ?? ""}
+                        onChange={(url) =>
+                          handleServiceDefinitionChange(index, "image", url)
+                        }
+                      />
+
+                      <Field
+                        label="Image alt text (SEO)"
+                        value={service.imageAlt ?? ""}
+                        onChange={(value) =>
+                          handleServiceDefinitionChange(index, "imageAlt", value)
+                        }
+                      />
 
                       <Field
                         label="Slug"

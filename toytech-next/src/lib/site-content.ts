@@ -8,6 +8,7 @@ export type ServiceDefinition = {
   slug: string;
   icon: string;
   image?: string;
+  imageAlt?: string;
 };
 
 export type SiteContent = {
