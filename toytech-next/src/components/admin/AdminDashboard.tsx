@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import {
   Save,
   Globe2,
@@ -12,6 +12,8 @@ import {
   MessageSquareQuote,
   CircleHelp,
   ChevronDown,
+  ArrowUp,
+  LayoutGrid,
 } from "lucide-react";
 import type { Locale, Translation } from "../../lib/i18n";
 import { locales } from "../../lib/i18n";
@@ -261,6 +263,7 @@ export function AdminDashboard({
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     Common: false,
     "Navigation and hero": false,
@@ -271,6 +274,33 @@ export function AdminDashboard({
     FAQ: false,
     "Service cards": true,
   });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const currentTranslation = useMemo(
     () => content.translations[selectedLocale],
@@ -495,45 +525,84 @@ export function AdminDashboard({
   };
 
   return (
-    <div className="space-y-8 pb-10">
-      <div className="flex flex-col gap-4 rounded-[2rem] border border-zinc-800 bg-zinc-900/80 p-6 lg:flex-row lg:items-center lg:justify-between">
-        <div>
-          <h1 className="text-3xl font-black tracking-tight lg:text-5xl">
-            Content admin
-          </h1>
-          <p className="mt-2 text-zinc-400">
-            Signed in as <span className="font-bold text-white">{userEmail}</span>
-          </p>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2 text-sm text-zinc-400">
-            <Globe2 className="h-4 w-4 text-red-400" />
-            {locales.map((locale) => (
-              <button
-                key={locale}
-                onClick={() => setSelectedLocale(locale)}
-                className={`rounded-lg px-3 py-1.5 font-bold uppercase transition-colors ${
-                  selectedLocale === locale
-                    ? "bg-red-600 text-white"
-                    : "text-zinc-400 hover:text-white"
-                }`}
-              >
-                {locale}
-              </button>
-            ))}
+    <div className="space-y-8 pb-32 relative">
+      {/* Sticky Header */}
+      <div className="sticky top-4 z-[100] mb-8">
+        <div className="flex flex-col gap-4 rounded-[2rem] border border-zinc-800 bg-zinc-900/80 p-6 backdrop-blur-xl shadow-2xl lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex items-center gap-4">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-600/10 text-red-600">
+              <ShieldCheck className="h-6 w-6" />
+            </div>
+            <div>
+              <h1 className="text-xl font-black tracking-tight lg:text-3xl">
+                Content Admin
+              </h1>
+              <p className="hidden text-xs text-zinc-400 lg:block">
+                Editing <span className="font-bold text-white uppercase">{selectedLocale}</span> version
+              </p>
+            </div>
           </div>
 
-          <button
-            onClick={handleSave}
-            disabled={saving}
-            className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-4 py-2 text-sm font-black uppercase tracking-[0.18em] text-white transition-colors hover:bg-red-700 disabled:bg-zinc-800"
-          >
-            {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
-            Save
-          </button>
+          <div className="flex flex-wrap items-center gap-4">
+            {/* Quick Navigation Menu */}
+            <div className="group relative">
+              <button className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2.5 text-sm font-bold text-white transition-all hover:border-red-600">
+                <LayoutGrid className="h-4 w-4 text-red-400" />
+                Quick Jump
+                <ChevronDown className="h-4 w-4 text-zinc-500 transition-transform group-hover:rotate-180" />
+              </button>
+              <div className="invisible absolute top-full right-0 mt-2 min-w-[200px] origin-top-right translate-y-2 scale-95 space-y-1 rounded-2xl border border-zinc-800 bg-zinc-950 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">
+                {sectionGroups.map((group) => (
+                  <button
+                    key={group.title}
+                    onClick={() => {
+                      setOpenSections((prev) => ({ ...prev, [group.title]: true }));
+                      setTimeout(() => scrollToSection(group.title), 50);
+                    }}
+                    className="flex w-full items-center gap-3 rounded-xl px-4 py-2 text-left text-sm font-medium text-zinc-400 transition-colors hover:bg-zinc-900 hover:text-white"
+                  >
+                    {group.title}
+                  </button>
+                ))}
+                <div className="my-1 border-t border-zinc-800" />
+                <button
+                  onClick={() => scrollToSection("service-cards")}
+                  className="flex w-full items-center gap-3 rounded-xl px-4 py-2 text-left text-sm font-bold text-red-400 transition-colors hover:bg-zinc-900"
+                >
+                  <Wrench className="h-4 w-4" />
+                  Service cards
+                </button>
+              </div>
+            </div>
 
-          <LogoutButton />
+            <div className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-950 px-3 py-1.5 text-xs text-zinc-400">
+              <Globe2 className="h-4 w-4 text-red-400" />
+              {locales.map((locale) => (
+                <button
+                  key={locale}
+                  onClick={() => setSelectedLocale(locale)}
+                  className={`rounded-lg px-2.5 py-1.5 font-bold uppercase transition-colors ${
+                    selectedLocale === locale
+                      ? "bg-red-600 text-white"
+                      : "text-zinc-400 hover:text-white"
+                  }`}
+                >
+                  {locale}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={handleSave}
+              disabled={saving}
+              className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-2.5 text-sm font-black uppercase tracking-[0.18em] text-white shadow-lg shadow-red-600/20 transition-all hover:bg-red-700 hover:shadow-red-600/30 disabled:bg-zinc-800"
+            >
+              {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
+              Save
+            </button>
+
+            <LogoutButton />
+          </div>
         </div>
       </div>
 
@@ -554,7 +623,8 @@ export function AdminDashboard({
           {sectionGroups.map((group) => (
             <section
               key={group.title}
-              className="rounded-[2rem] border border-zinc-800 bg-zinc-900 p-6"
+              id={group.title}
+              className="scroll-mt-32 rounded-[2rem] border border-zinc-800 bg-zinc-900 p-6"
             >
               <button
                 onClick={() => toggleSection(group.title)}
@@ -732,7 +802,10 @@ export function AdminDashboard({
         </div>
 
         <div className="space-y-6">
-          <section className="rounded-[2rem] border border-zinc-800 bg-zinc-900 p-6">
+          <section
+            id="service-cards"
+            className="scroll-mt-32 rounded-[2rem] border border-zinc-800 bg-zinc-900 p-6"
+          >
             <div className="mb-5 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <ShieldCheck className="h-5 w-5 text-red-400" />
@@ -862,6 +935,17 @@ export function AdminDashboard({
           </section>
         </div>
       </div>
+
+      {/* Floating Back to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-[110] flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white shadow-2xl shadow-red-600/40 transition-all hover:-translate-y-1 hover:bg-red-700 animate-in fade-in zoom-in duration-300"
+          aria-label="Back to top"
+        >
+          <ArrowUp className="h-6 w-6" />
+        </button>
+      )}
     </div>
   );
 }
