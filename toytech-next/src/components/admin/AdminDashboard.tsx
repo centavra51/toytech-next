@@ -542,9 +542,15 @@ export function AdminDashboard({
               <h1 className="text-xl font-black tracking-tight lg:text-3xl">
                 Content Admin
               </h1>
-              <p className="hidden text-xs text-zinc-400 lg:block">
-                Editing <span className="font-bold text-white uppercase">{selectedLocale}</span> version
-              </p>
+              <div className="flex items-center gap-3">
+                <p className="text-xs text-zinc-400">
+                  Editing <span className="font-bold text-white uppercase">{selectedLocale}</span> version
+                </p>
+                <span className="hidden h-1 w-1 rounded-full bg-zinc-700 lg:block" />
+                <p className="hidden text-xs text-zinc-500 lg:block">
+                  Signed in as <span className="text-zinc-300">{userEmail}</span>
+                </p>
+              </div>
             </div>
           </div>
 

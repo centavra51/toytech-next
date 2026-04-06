@@ -77,7 +77,7 @@ export function IconPicker({ value, onChange, label }: IconPickerProps) {
       </div>
       {value && !availableIcons[value] && (
         <p className="text-xs text-red-400">
-          Current icon "{value}" is not in the picker list.
+          Current icon &quot;{value}&quot; is not in the picker list.
         </p>
       )}
     </div>
