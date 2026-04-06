@@ -191,17 +191,6 @@ export default function Navbar({ locale, t }: NavbarProps) {
           backgroundColor: "#09090b",
         }}
       >
-        <div className="relative mb-6 h-20 w-72 overflow-hidden">
-          <Image
-            src="/logo_monolith.png"
-            alt="ToyTech"
-            fill
-            className="origin-left translate-y-[5px] scale-[1.28] object-contain object-left"
-            sizes="(max-width: 576px) 288px, 320px"
-            quality={85}
-          />
-        </div>
-
         {navLinks.map((link) => (
           <a
             key={link.href}
