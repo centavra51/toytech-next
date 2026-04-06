@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
 import { locales, defaultLocale } from "../lib/i18n";
-import servicesData from "../lib/services.json";
+import { getSiteContent } from "../lib/site-content";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://toytech.md";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toytech.md";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const content = await getSiteContent();
+  const services = content.services;
   const now = new Date().toISOString();
 
   const entries: MetadataRoute.Sitemap = [];
@@ -30,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Service pages for each locale
   for (const locale of locales) {
-    for (const service of servicesData) {
+    for (const service of services) {
       const alternates: Record<string, string> = {};
       for (const l of locales) {
         alternates[l] = `${BASE_URL}/${l}/services/${service.slug}`;
