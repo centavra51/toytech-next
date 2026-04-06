@@ -180,9 +180,13 @@ export default function Navbar({ locale, t }: NavbarProps) {
       </div>
 
       <div
-        className={`fixed left-0 right-0 bottom-0 top-20 z-[60] flex flex-col items-center justify-center gap-8 bg-black px-6 transition-transform duration-300 lg:hidden ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed inset-0 left-0 right-0 z-[60] flex flex-col items-center justify-center gap-8 px-6 transition-all duration-300 overflow-hidden lg:hidden ${
+          isMenuOpen ? "visible" : "invisible"
         }`}
+        style={{
+          backgroundColor: "#000000",
+          top: isMenuOpen ? "80px" : "100%",
+        }}
       >
         <div className="relative mb-6 h-20 w-72 overflow-hidden">
           <Image
