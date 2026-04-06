@@ -147,7 +147,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
               {t.common.phone}
             </a>
             <a href="tel:+37368187882" className="whitespace-nowrap text-xl font-black text-white transition-colors hover:text-red-500">
-              +37368187882
+              +373 68 187 882
             </a>
           </div>
 
@@ -216,7 +216,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
           className="text-xl font-black text-white"
           onClick={() => setIsMenuOpen(false)}
         >
-          +37368187882
+          +373 68 187 882
         </a>
 
         <div className="mt-2 flex gap-4">

@@ -43,7 +43,7 @@ export default function LocationMap({ t }: { t: Translation }) {
                   {t.common.phone}
                 </a>
                 <a href="tel:+37368187882" className="mt-1 block font-medium text-zinc-200 hover:text-white">
-                  +37368187882
+                  +373 68 187 882
                 </a>
               </div>
             </div>

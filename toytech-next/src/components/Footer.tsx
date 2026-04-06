@@ -160,7 +160,7 @@ export default function Footer({ t, locale }: FooterProps) {
                     {t.common.phone}
                   </a>
                   <a href="tel:+37368187882" className="text-lg font-black text-zinc-400 hover:text-white">
-                    +37368187882
+                    +373 68 187 882
                   </a>
                 </div>
               </li>
