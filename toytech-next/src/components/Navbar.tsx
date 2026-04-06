@@ -143,10 +143,10 @@ export default function Navbar({ locale, t }: NavbarProps) {
           </div>
 
           <div className="flex shrink-0 flex-col items-end gap-0.5">
-            <a href={toTelHref(t.common.phone)} className="whitespace-nowrap text-lg font-black text-white transition-colors hover:text-red-500">
+            <a href={toTelHref(t.common.phone)} className="whitespace-nowrap text-xl font-black text-white transition-colors hover:text-red-500">
               {t.common.phone}
             </a>
-            <a href="tel:+37368187882" className="whitespace-nowrap text-sm font-semibold text-zinc-400 transition-colors hover:text-red-500">
+            <a href="tel:+37368187882" className="whitespace-nowrap text-xl font-black text-white transition-colors hover:text-red-500">
               +37368187882
             </a>
           </div>
@@ -213,7 +213,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
         </a>
         <a
           href="tel:+37368187882"
-          className="text-base font-semibold text-zinc-400"
+          className="text-xl font-black text-white"
           onClick={() => setIsMenuOpen(false)}
         >
           +37368187882

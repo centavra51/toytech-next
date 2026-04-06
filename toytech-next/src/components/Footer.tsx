@@ -159,7 +159,7 @@ export default function Footer({ t, locale }: FooterProps) {
                   <a href={toTelHref(t.common.phone)} className="text-lg font-black text-zinc-400 hover:text-white">
                     {t.common.phone}
                   </a>
-                  <a href="tel:+37368187882" className="text-sm font-semibold text-zinc-500 hover:text-white">
+                  <a href="tel:+37368187882" className="text-lg font-black text-zinc-400 hover:text-white">
                     +37368187882
                   </a>
                 </div>
