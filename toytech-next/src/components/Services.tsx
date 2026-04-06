@@ -25,6 +25,8 @@ type ServiceItem = {
   id: string;
   slug: string;
   icon: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 interface ServicesProps {

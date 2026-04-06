@@ -151,7 +151,7 @@ export default async function ServicePage({
   const Icon = iconMap[svcInfo.icon as keyof typeof iconMap] || Cog;
   const serviceImage = svcInfo.image?.trim();
   const serviceParagraphs = getTextParagraphs(service.long_desc || service.desc);
-  const serviceImageAlt = service.seoTitle ?? service.title;
+  const serviceImageAlt = svcInfo.imageAlt || service.seoTitle || service.title;
   const relatedLabel = getRelatedLabel(locale);
   const relatedItems = (relatedServices[svcInfo.id as keyof typeof relatedServices] ?? [])
     .map((relatedId) => {
