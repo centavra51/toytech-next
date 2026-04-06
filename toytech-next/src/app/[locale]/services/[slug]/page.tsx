@@ -18,6 +18,13 @@ import {
   Thermometer,
   Wind,
   Zap,
+  Wrench,
+  Car,
+  Settings,
+  Search,
+  Cpu,
+  Fan,
+  Stethoscope,
 } from "lucide-react";
 import Navbar from "../../../../components/Navbar";
 import Footer from "../../../../components/Footer";
@@ -39,6 +46,13 @@ const iconMap = {
   box: Box,
   droplets: Droplets,
   "air-vent": AirVent,
+  wrench: Wrench,
+  car: Car,
+  settings: Settings,
+  search: Search,
+  cpu: Cpu,
+  fan: Fan,
+  stethoscope: Stethoscope,
 };
 
 export async function generateStaticParams() {

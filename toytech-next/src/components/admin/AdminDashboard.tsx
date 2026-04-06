@@ -20,6 +20,7 @@ import { locales } from "../../lib/i18n";
 import type { ServiceDefinition, SiteContent } from "../../lib/site-content";
 import { LogoutButton } from "./LogoutButton";
 import { ImageUpload } from "./ImageUpload";
+import { IconPicker } from "./IconPicker";
 
 type TextFieldConfig = {
   path: string;
@@ -887,7 +888,7 @@ export function AdminDashboard({
                           handleServiceDefinitionChange(index, "slug", value)
                         }
                       />
-                      <Field
+                      <IconPicker
                         label="Icon"
                         value={service.icon}
                         onChange={(value) =>

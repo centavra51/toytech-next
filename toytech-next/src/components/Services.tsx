@@ -16,6 +16,13 @@ import {
   Thermometer,
   Wind,
   Zap,
+  Wrench,
+  Car,
+  Settings,
+  Search,
+  Cpu,
+  Fan,
+  Stethoscope,
   type LucideIcon,
 } from "lucide-react";
 import type { Translation } from "../lib/i18n";
@@ -49,6 +56,13 @@ const iconMap: Record<string, LucideIcon> = {
   box: Box,
   droplets: Droplets,
   "air-vent": AirVent,
+  wrench: Wrench,
+  car: Car,
+  settings: Settings,
+  search: Search,
+  cpu: Cpu,
+  fan: Fan,
+  stethoscope: Stethoscope,
 };
 
 function getServiceTranslation(
