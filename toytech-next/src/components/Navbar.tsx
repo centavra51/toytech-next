@@ -76,7 +76,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
   return (
     <nav
       className={`fixed left-0 right-0 top-0 z-50 border-b border-zinc-900/80 transition-all duration-300 ${
-        isScrolled ? "bg-zinc-950/95 backdrop-blur-md" : "bg-zinc-950/88 backdrop-blur-sm"
+        isScrolled ? "bg-zinc-950/95 backdrop-blur-md" : "bg-zinc-950/90 backdrop-blur-sm"
       }`}
     >
       <div className="mx-auto flex h-20 w-full max-w-[1380px] items-center justify-between gap-4 px-4 sm:px-5 lg:grid lg:h-24 lg:grid-cols-[auto_1fr_auto] lg:gap-8 lg:px-6">
@@ -180,7 +180,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
       </div>
 
       <div
-        className={`fixed inset-0 left-0 right-0 z-[60] flex flex-col items-center justify-center gap-8 px-6 transition-all duration-300 overflow-hidden lg:hidden ${
+        className={`fixed left-0 right-0 bottom-0 z-[60] flex flex-col items-center justify-center gap-8 px-6 transition-all duration-300 overflow-hidden lg:hidden ${
           isMenuOpen ? "visible" : "invisible"
         }`}
         style={{
