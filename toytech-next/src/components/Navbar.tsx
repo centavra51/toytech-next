@@ -180,7 +180,7 @@ export default function Navbar({ locale, t }: NavbarProps) {
       </div>
 
       <div
-        className={`fixed inset-0 z-[60] flex flex-col items-center justify-center gap-8 bg-zinc-950 px-6 transition-transform duration-300 lg:hidden ${
+        className={`fixed left-0 right-0 bottom-0 top-20 z-[60] flex flex-col items-center justify-center gap-8 bg-zinc-950/98 px-6 transition-transform duration-300 lg:hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
