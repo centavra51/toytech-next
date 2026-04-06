@@ -15,6 +15,17 @@ export async function generateMetadata({
   return {
     title: t.hero.title.replace(/<\/?[^>]+(>|$)/g, ""),
     description: t.hero.subtitle,
+    icons: {
+      icon: [
+        { url: "/favicons/favicon.ico", sizes: "48x48" },
+        { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      ],
+      apple: "/favicons/apple-touch-icon.png",
+      other: [
+        { rel: "manifest", url: "/favicons/site.webmanifest" },
+      ],
+    },
   };
 }
 
