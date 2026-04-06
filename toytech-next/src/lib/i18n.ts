@@ -16,6 +16,7 @@ export type Translation = {
   common: {
     title: string;
     phone: string;
+    phoneAdmin: string;
     address: string;
     email: string;
     hoursWeekdays: string;
@@ -237,6 +238,7 @@ const translations: Record<Locale, Translation> = {
     common: {
       title: "ToyTech Hybrid Specialist",
       phone: "+373 68 771 547",
+      phoneAdmin: "+373 68 187 882",
       address: "Кишинев, ул. Grenoble 7",
       email: "toytechmd@gmail.com",
       hoursWeekdays: "Пн-Пт: 09:00 - 18:00",
@@ -445,6 +447,7 @@ const translations: Record<Locale, Translation> = {
     common: {
       title: "ToyTech Hybrid Specialist",
       phone: "+373 68 771 547",
+      phoneAdmin: "+373 68 187 882",
       address: "Chisinau, str. Grenoble 7",
       email: "toytechmd@gmail.com",
       hoursWeekdays: "Lun-Vin: 09:00 - 18:00",
@@ -653,6 +656,7 @@ const translations: Record<Locale, Translation> = {
     common: {
       title: "ToyTech Hybrid Specialist",
       phone: "+373 68 771 547",
+      phoneAdmin: "+373 68 187 882",
       address: "Chisinau, Grenoble 7",
       email: "toytechmd@gmail.com",
       hoursWeekdays: "Mon-Fri: 09:00 - 18:00",
