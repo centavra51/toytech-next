@@ -180,18 +180,10 @@ export default function Navbar({ locale, t }: NavbarProps) {
       </div>
 
       <div
-        className={`fixed left-0 right-0 bottom-0 top-20 z-[60] flex flex-col items-center justify-center gap-8 bg-zinc-950/98 px-6 transition-transform duration-300 lg:hidden ${
+        className={`fixed left-0 right-0 bottom-0 top-20 z-[60] flex flex-col items-center justify-center gap-8 bg-black px-6 transition-transform duration-300 lg:hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <button
-          className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900 text-white sm:right-5 sm:top-5"
-          onClick={() => setIsMenuOpen(false)}
-          aria-label="Close menu"
-        >
-          <X className="h-6 w-6" />
-        </button>
-
         <div className="relative mb-6 h-20 w-72 overflow-hidden">
           <Image
             src="/logo_monolith.png"
