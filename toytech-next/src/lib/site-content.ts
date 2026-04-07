@@ -33,11 +33,27 @@ function normalizeSiteContent(data: Partial<SiteContent> | null | undefined): Si
     defaultSiteContent.services.map((service) => [service.id, service]),
   ) as Record<string, ServiceDefinition>;
 
+  // Deeply merge translations for each locale
+  const mergedTranslations = { ...defaultSiteContent.translations };
+  if (data?.translations) {
+    for (const locale of locales) {
+      if (data.translations[locale]) {
+        mergedTranslations[locale] = {
+          ...defaultSiteContent.translations[locale],
+          ...data.translations[locale],
+          // Ensure nested objects like footer and privacy are also merged if needed
+          footer: {
+            ...defaultSiteContent.translations[locale].footer,
+            ...data.translations[locale].footer,
+          },
+          privacy: data.translations[locale].privacy ?? defaultSiteContent.translations[locale].privacy,
+        };
+      }
+    }
+  }
+
   return {
-    translations: applyServiceCatalog({
-      ...defaultSiteContent.translations,
-      ...(data?.translations ?? {}),
-    } as Record<Locale, Translation>),
+    translations: applyServiceCatalog(mergedTranslations),
     services: Array.isArray(data?.services) && data.services.length > 0
       ? (data.services as ServiceDefinition[]).map((service) => ({
           ...defaultServicesById[service.id],
