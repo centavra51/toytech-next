@@ -179,6 +179,14 @@ export default function Footer({ t, locale }: FooterProps) {
           <p className="text-sm font-bold uppercase tracking-widest text-zinc-600">
             © {currentYear} {t.footer.company}. {t.footer.copyright}
           </p>
+          <div className="mt-4 flex justify-center gap-6">
+            <Link
+              href={`/${locale}/privacy`}
+              className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 transition-colors hover:text-red-500"
+            >
+              {t.footer.privacy}
+            </Link>
+          </div>
           <p className="mt-4 text-xs font-medium tracking-[0.14em] text-zinc-700">
             Developed{" "}
             <a

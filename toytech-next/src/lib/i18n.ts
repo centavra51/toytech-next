@@ -112,6 +112,15 @@ export type Translation = {
     company: string;
     contacts: string;
     copyright: string;
+    privacy: string;
+  };
+  privacy: {
+    title: string;
+    lastUpdated: string;
+    sections: {
+      title: string;
+      content: string;
+    }[];
   };
   form: {
     title: string;
@@ -409,6 +418,33 @@ const translations: Record<Locale, Translation> = {
       company: "ToyTech",
       contacts: "Контакты",
       copyright: "Все права защищены.",
+      privacy: "Политика конфиденциальности",
+    },
+    privacy: {
+      title: "Политика конфиденциальности",
+      lastUpdated: "Последнее обновление: 6 апреля 2026 г.",
+      sections: [
+        {
+          title: "1. Сбор данных",
+          content: "Мы собираем только ту информацию, которую вы добровольно предоставляете через форму записи: имя, номер телефона, марка/модель автомобиля и желаемая дата визита.",
+        },
+        {
+          title: "2. Цель обработки",
+          content: "Ваши данные используются исключительно для записи на сервис, уточнения деталей визита и связи с вами. Мы не используем ваши данные для рекламных рассылок без вашего согласия.",
+        },
+        {
+          title: "3. Хранение и защита",
+          content: "Данные хранятся в защищенной облачной базе данных (Supabase). Мы принимаем все необходимые меры для защиты вашей информации от несанкционированного доступа.",
+        },
+        {
+          title: "4. Передача третьим лицам",
+          content: "ToyTech не передает и не продает ваши персональные данные третьим лицам. Доступ к информации имеют только сотрудники сервиса, ответственные за работу с клиентами.",
+        },
+        {
+          title: "5. Файлы cookies",
+          content: "Сайт использует файлы cookies для обеспечения корректной работы и анализа посещаемости. Вы можете отключить их в настройках своего браузера.",
+        },
+      ],
     },
     form: {
       title: "Записаться на сервис",
@@ -617,6 +653,33 @@ const translations: Record<Locale, Translation> = {
       company: "ToyTech",
       contacts: "Contacte",
       copyright: "Toate drepturile rezervate.",
+      privacy: "Politica de confidențialitate",
+    },
+    privacy: {
+      title: "Politica de confidențialitate",
+      lastUpdated: "Ultima actualizare: 6 aprilie 2026",
+      sections: [
+        {
+          title: "1. Colectarea datelor",
+          content: "Colectăm doar informațiile pe care le furnizați voluntar prin formularul de programare: nume, număr de telefon, marca/modelul mașinii și data dorită a vizitei.",
+        },
+        {
+          title: "2. Scopul procesării",
+          content: "Datele dumneavoastră sunt utilizate exclusiv pentru programarea la service, clarificarea detaliilor vizitei și contactarea dumneavoastră. Nu folosim datele pentru mesaje publicitare fără acordul dumneavoastră.",
+        },
+        {
+          title: "3. Stocare și protecție",
+          content: "Datele sunt stocate într-o bază de date securizată în cloud (Supabase). Luăm toate măsurile necesare pentru a vă proteja informațiile împotriva accesului neautorizat.",
+        },
+        {
+          title: "4. Transferul către terți",
+          content: "ToyTech nu transferă și nu vinde datele dumneavoastră personale către terți. Accesul la informații îl au doar angajații service-ului responsabili de relația cu clienții.",
+        },
+        {
+          title: "5. Fișiere cookies",
+          content: "Site-ul utilizează fișiere cookies pentru a asigura funcționarea corectă și a analiza traficul. Le puteți dezactiva din setările browserului dumneavoastră.",
+        },
+      ],
     },
     form: {
       title: "Programare service",
@@ -753,6 +816,33 @@ const translations: Record<Locale, Translation> = {
       company: "ToyTech",
       contacts: "Contacts",
       copyright: "All rights reserved.",
+      privacy: "Privacy Policy",
+    },
+    privacy: {
+      title: "Privacy Policy",
+      lastUpdated: "Last updated: April 6, 2026",
+      sections: [
+        {
+          title: "1. Data Collection",
+          content: "We only collect information that you voluntarily provide through the booking form: name, phone number, car make/model, and desired date of visit.",
+        },
+        {
+          title: "2. Purpose of Processing",
+          content: "Your data is used exclusively for service booking, clarifying visit details, and contacting you. We do not use your data for advertising mailings without your consent.",
+        },
+        {
+          title: "3. Storage and Protection",
+          content: "Data is stored in a secure cloud database (Supabase). We take all necessary measures to protect your information from unauthorized access.",
+        },
+        {
+          title: "4. Third-party Transfer",
+          content: "ToyTech does not transfer or sell your personal data to third parties. Access to information is only granted to service employees responsible for client relations.",
+        },
+        {
+          title: "5. Cookies",
+          content: "The site uses cookies to ensure proper operation and analyze traffic. You can disable them in your browser settings.",
+        },
+      ],
     },
     form: {
       title: "Book a service visit",
