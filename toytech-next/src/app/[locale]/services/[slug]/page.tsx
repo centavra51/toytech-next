@@ -62,6 +62,9 @@ export async function generateStaticParams() {
 
   for (const locale of locales) {
     for (const svc of content.services) {
+      // Skip placeholder/draft services — they have no real page and would
+      // produce 404s that hurt crawl budget and sitemap trustworthiness.
+      if (svc.slug.startsWith("new-service-")) continue;
       params.push({ locale, slug: svc.slug });
     }
   }
@@ -120,6 +123,9 @@ function getRelatedLabel(locale: string) {
   };
 }
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toytech.md";
+const ALL_LOCALES = ["ru", "ro", "en"] as const;
+
 export async function generateMetadata({
   params,
 }: {
@@ -138,10 +144,23 @@ export async function generateMetadata({
 
   const description = getTextParagraphs(service.long_desc || service.desc)[0] ?? service.desc;
 
+  // Build hreflang alternates for all locale variants of this page
+  const languages: Record<string, string> = {};
+  for (const l of ALL_LOCALES) {
+    languages[l] = `${BASE_URL}/${l}/services/${slug}`;
+  }
+  // x-default → canonical default locale (ro)
+  languages["x-default"] = `${BASE_URL}/ro/services/${slug}`;
+
   return {
     title: service.seoTitle ?? service.title,
     description,
     keywords: service.keywords,
+    // canonical tells Google exactly which URL is the authoritative one
+    alternates: {
+      canonical: `${BASE_URL}/${locale}/services/${slug}`,
+      languages,
+    },
   };
 }
 

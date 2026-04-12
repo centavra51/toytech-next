@@ -5,6 +5,9 @@ import { getLocaleContent } from "../../lib/site-content";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://toytech.md";
+const ALL_LOCALES = ["ru", "ro", "en"] as const;
+
 export async function generateMetadata({
   params,
 }: {
@@ -12,9 +15,22 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getLocaleContent(locale);
+
+  // Build hreflang map for all locale variants of the home page
+  const languages: Record<string, string> = {};
+  for (const l of ALL_LOCALES) {
+    languages[l] = `${BASE_URL}/${l}`;
+  }
+  languages["x-default"] = `${BASE_URL}/ro`;
+
   return {
     title: t.hero.title.replace(/<\/?[^>]+(>|$)/g, ""),
     description: t.hero.subtitle,
+    // canonical prevents "Duplicate without user-selected canonical" in GSC
+    alternates: {
+      canonical: `${BASE_URL}/${locale}`,
+      languages,
+    },
     icons: {
       icon: [
         { url: "/favicons/favicon.ico", sizes: "48x48" },
